@@ -9,9 +9,14 @@ module load python_gpu/3.7.4
 git clone https://github.com/FredericOdermatt/NLP_commonsense
 ```
 
+Inside NLP_commonsense do:
+```bash
+git clone https://github.com/huangxt39/KaLM.git
+```
+
 To have clean environments we use conda, install miniconda from the official website
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 chmod +x Miniconda3-latest-Linux-x86.sh
 ./Miniconda3-latest-Linux-x86.sh
 ```
@@ -29,7 +34,7 @@ conda install pytorch==1.4.0 torchvision==0.5.0 -c pytorch
 ```
 Install fairseq which is a submodule of the cloned gitrepo
 ```bash
-pip install -e fairseq
+pip install -e fairseqpip install -e fairseq
 ```
 
 Execute 
