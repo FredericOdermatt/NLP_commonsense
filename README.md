@@ -9,9 +9,9 @@ module load python_gpu/3.7.4
 git clone https://github.com/FredericOdermatt/NLP_commonsense
 ```
 
-Inside NLP_commonsense do:
+Inside NLP_commonsense install the submodules KaLM (our fork) and fairseq
 ```bash
-git clone https://github.com/huangxt39/KaLM.git
+git submodule update --init
 ```
 
 To have clean environments we use conda, install miniconda from the official website
@@ -34,7 +34,7 @@ conda install pytorch==1.4.0 torchvision==0.5.0 -c pytorch
 ```
 Install fairseq which is a submodule of the cloned gitrepo
 ```bash
-pip install -e fairseqpip install -e fairseq
+pip install -e fairseq
 ```
 
 Execute 
@@ -56,4 +56,7 @@ bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< 
 * bpeek -J JOBNAME: will output recent lines a job wrote on the GPU
 * An activated enviroment will automatically be picked up by the submission system.
 
+## Working with submodules
 
+The submodules are their own git-repo. Any change inside KaLM should be added and commit first inside KaLM. \
+Then in a second step you can `git add KaLM` in the main folder and commit this change.
