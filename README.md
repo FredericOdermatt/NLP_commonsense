@@ -11,9 +11,9 @@ git clone https://github.com/FredericOdermatt/NLP_commonsense
 
 To have clean environments we use conda, install miniconda from the official website
 ```bash
-wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
-chmod +x Anaconda3-2020.07-Linux-x86_64.sh
-./Anaconda3-2020.07-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86.sh
+chmod +x Miniconda3-latest-Linux-x86.sh
+./Miniconda3-latest-Linux-x86.sh
 ```
 
 restart shell to make conda work after  `conda init`
