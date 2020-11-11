@@ -29,5 +29,6 @@ idx = np.argpartition(mover_scores, shown_elems)
 for i in idx[:shown_elems]:
     print("Reference:     ", references[i], "\n")
     print("Answer:     : ", answers[i], "\n")
+    print("Row Index:     : ", references_df.index[int(i/3.)], "\n")
     print("------------------------------------\n")
     
