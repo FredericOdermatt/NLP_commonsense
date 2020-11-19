@@ -17,8 +17,8 @@ git submodule update --init
 To have clean environments we use conda, install miniconda from the official website
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-chmod +x Miniconda3-latest-Linux-x86.sh
-./Miniconda3-latest-Linux-x86.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
 ```
 
 restart shell to make conda work after  `conda init`
