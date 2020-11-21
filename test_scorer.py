@@ -1,34 +1,22 @@
-import pandas as pd
 import numpy as np
-import seaborn as sns
-from Scoring.Scores import Scorer
+from Scoring.Scores import MoverScore, BLEUScore
+from Visualization.visuals import Visualizor
 
-scoring = Scorer()
+reference_path = "Data/kalm_data/references/subtaskC_gold_answers.csv"
+prediction_path = "Data/kalm_data/predictions/subtaskC_answers.csv"
 
-answers_df = pd.read_csv("./KaLM/subtaskC_generated/subtaskC_answers.csv", index_col = 0)
-references_df = pd.read_csv("~/NLP_project/SemEval2020-Task4-Commonsense-Validation-and-Explanation/ALL_data/Test_Data/subtaskC_gold_answers.csv", index_col = 0)
+## -------- Mover Score --------
+'''
+MS = MoverScore(prediction_path, reference_path)
+print("Mover Scores for similarity: ", np.mean(MS.scores))
+MS.print_bad_results()
 
-if len(answers_df) != len(references_df):
-    raise ValueError("Number of reference and generated reasons do not match.")
+vis = Visualizor()
+vis.plot_hist(MS.scores)
+'''
 
-if any(answers_df.index.to_numpy() != references_df.index.to_numpy()):
-    raise ValueError("Indices of provided answers and reference reasons do not match.")
-
-answers_array = pd.concat([answers_df, answers_df, answers_df], axis=1).to_numpy()
-references_array = references_df.to_numpy()
-answers = answers_array.reshape((np.prod(answers_array.shape),)).tolist()
-references = references_array.reshape((np.prod(answers_array.shape),)).tolist()
-
-mover_scores = scoring.MoverScore(answers, references)
-print("Mover Scores for similarity: ", np.mean(mover_scores))
-moverscore_hist = sns.displot(mover_scores)
-moverscore_hist.savefig("score_hist.png")
-
-shown_elems = 3
-idx = np.argpartition(mover_scores, shown_elems)
-for i in idx[:shown_elems]:
-    print("Reference:     ", references[i], "\n")
-    print("Answer:     : ", answers[i], "\n")
-    print("Row Index:     : ", references_df.index[int(i/3.)], "\n")
-    print("------------------------------------\n")
-    
+## -------- BLEU Score --------
+# TODO scores not computed correctly , pipeline complete
+BS = BLEUScore(prediction_path, reference_path)
+#print("All scores: ", BS.scores)
+print("BLEU Scores for similarity: ", np.mean(BS.scores))
