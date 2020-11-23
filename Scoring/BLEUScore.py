@@ -219,7 +219,8 @@ def read_predictions(filename: str) -> List[List[str]]:
 
 
 def own_bleu_score(predictions, references, max_order=4, smooth=False):
-    from nltk.translate.bleu_score import sentence_bleu
+    from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
+    from nltk import word_tokenize
 
     '''
     reference_corpus = []
@@ -251,8 +252,11 @@ def own_bleu_score(predictions, references, max_order=4, smooth=False):
         counter += 1
         scores.append(sentence_bleu(references, translation, weights=(0,0,0,1)))
     '''
+    references = [word_tokenize(reference) for reference in references]
+    predictions = word_tokenize(predictions[0])
     scores = sentence_bleu(references, predictions, weights=(0,0,0,1))
     return scores
+
 
 # Either call this function to get the challenge values which are strange yet
 def challenge_score(reference_path, predictions_path):
@@ -261,8 +265,9 @@ def challenge_score(reference_path, predictions_path):
     #score, precisions = calculate_bleu(references, predictions,
     #                      max_order=4, smooth=False)
 
-    scores = own_bleu_score(predictions, references)
+    print(references.shape)
+    #scores = corpus_bleu(references, predictions)
 
-    #print(precisions)
+    print(precisions)
     #print(f'BLEU score: {score_dic['scores']*100:.4f}.')
     return scores
