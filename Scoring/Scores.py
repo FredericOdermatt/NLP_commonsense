@@ -11,8 +11,13 @@ class Scorer:
     def __init__(self, prediction_path, reference_path):
         self.prediction_path = prediction_path
         self.reference_path = reference_path
-        self.load_data(prediction_path, reference_path)
+        self._references = []
+        self._predictions = []
         self._scores = []
+        self.predictions_df = pd.DataFrame()
+        self.references_df = pd.DataFrame()
+        self.load_data(prediction_path, reference_path)
+
 
     def load_data(self, prediction_path, reference_path):
         if  not os.path.isfile(prediction_path):
@@ -50,30 +55,21 @@ class BLEUScore(Scorer):
         self.compute_scores()
 
     def compute_scores(self):
-        predictions, references = self.preprocess()
-        
-        c = 0
+        self.preprocess()
 
-        for prediction, reference_triplet in zip(predictions, references):
-            #print(prediction, " dann ", reference_triplet)
-            reference_triplet = reference_triplet.reshape(3,-1)
-            #if c < 3:
-            #    print(reference_triplet)
-            #c += 1
-            self._scores.append(own_bleu_score(prediction, reference_triplet))
+        for prediction, reference_triplet in zip(self._predictions, self._references):
+            self._scores.append(own_bleu_score(predictions=prediction, references=reference_triplet))
 
     def preprocess(self):
-        predictions = self.predictions_df.values
-        references = self.references_df.values
-
-        return (predictions, references)
+        self._predictions = self.predictions_df.values
+        self._references = self.references_df.values
 
     def print_bad_results(self, shown_elems=3):
-        idx = np.argpartition(bleu_scores, shown_elems)
+        idx = np.argpartition(self._scores, shown_elems)
         for i in idx[:shown_elems]:
-            print("BLEU Reference:     ", references[i], "\n")
-            print("BLEU Answer:     : ", predictions[i], "\n")
-            print("BLEU Row Index:     : ", references_df.index[int(i/3.)], "\n")
+            print("BLEU References:     ", self._references[i], "\n")
+            print("BLEU Answer:     : ", self._predictions[i], "\n")
+            print("BLEU Row Index:     : ", self.references_df.index[int(i/3.)], "\n")
             print("------------------------------------\n")
 
 
@@ -93,25 +89,23 @@ class MoverScore(Scorer):
         # Beispiel Sätze
         # predictions = ["A rabbit can not fly because he has no wings.", "The rabbit is running over the moon.","Having breakfast is genious since cheese is delicous."]
         # references = ["The rabbit is not a bird.","Showing mercy is not an option.", "The dinner was very good because the meat was very tender."]
-        predictions, references = self.preprocess()
+        self.preprocess()
 
-        idf_dict_hyp = get_idf_dict(predictions)
-        idf_dict_ref = get_idf_dict(references)
-        self._scores = word_mover_score(references, predictions, idf_dict_ref, idf_dict_hyp, stop_words=["."], n_gram=1, remove_subwords=True)
+        idf_dict_hyp = get_idf_dict(self._predictions)
+        idf_dict_ref = get_idf_dict(self._references)
+        self._scores = word_mover_score(self._references, self._predictions, idf_dict_ref, idf_dict_hyp, stop_words=["."], n_gram=4, remove_subwords=True)
 
     def preprocess(self):
         predictions_array = pd.concat([self.predictions_df, self.predictions_df, self.predictions_df], axis=1).to_numpy()
         references_array = self.references_df.to_numpy()
-        predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
-        references = references_array.reshape((np.prod(predictions_array.shape),)).tolist()
-
-        return (predictions, references)
+        self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
+        self._references = references_array.reshape((np.prod(predictions_array.shape),)).tolist()
 
     def print_bad_results(self, shown_elems=3):
-        idx = np.argpartition(mover_scores, shown_elems)
+        idx = np.argpartition(self._scores, shown_elems)
         for i in idx[:shown_elems]:
-            print("Mover Reference:     ", references[i], "\n")
-            print("Mover Answer:     : ", predictions[i], "\n")
-            print("Mover Row Index:     : ", references_df.index[int(i/3.)], "\n")
+            print("Mover Reference:     ", self._references[i], "\n")
+            print("Mover Answer:     : ", self._predictions[i], "\n")
+            print("Mover Row Index:     : ", self.references_df.index[int(i/3.)], "\n")
             print("------------------------------------\n") 
         
