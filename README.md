@@ -37,6 +37,18 @@ Install fairseq which is a submodule of the cloned gitrepo
 pip install -e fairseq
 ```
 
+Install packages for scores
+```bash
+pip install moverscore
+pip install nltk
+```
+
+To run the nltk tokenization open the python console and enter:
+```bash
+import nltk
+nltk.download('punkt')
+```
+
 Execute 
 ```bash
 bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< "NLP/KaLM/train3.sh"
