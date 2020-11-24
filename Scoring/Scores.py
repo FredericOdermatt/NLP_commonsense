@@ -109,3 +109,23 @@ class MoverScore(Scorer):
             print("Mover Row Index:     : ", self.references_df.index[int(i/3.)], "\n")
             print("------------------------------------\n") 
         
+class RougeScore(Scorer):
+    def __init__(self, prediction_path, reference_path):
+        super().__init__(prediction_path, reference_path)
+        self.compute_scores()
+        
+    def compute_scores(self):
+
+        from rouge_score import rouge_scorer
+        self.preprocess()
+        
+        scorer = rouge_scorer.RougeScorer(["rouge2"], use_stemmer=True)
+        self._scores = self.data_converted.apply(lambda x: scorer.score(x['reference'], x['prediction'])["rouge2"], axis = 1, result_type = 'expand')
+        self._scores.rename(columns={0: 'precision', 1: 'recall', 2: 'fmeasure'})
+
+    def preprocess(self):
+        
+        self.data_converted = pd.concat([self.predictions_df, self.reference_df.iloc[:,0]], axis=1, join='inner')
+        self.data_converted = self.data_converted.append([pd.concat([prediction_df, reference_df.iloc[:,1]], axis=1, join='inner'),
+                                                          pd.concat([prediction_df, reference_df.iloc[:,2]], axis=1, join='inner')])
+        self.data_converted.columns = ['prediction', 'reference']
