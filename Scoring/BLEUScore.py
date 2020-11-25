@@ -17,11 +17,13 @@ import collections
 import math
 import os
 
+import nltk
+from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
+
 EXIT_STATUS_ANSWERS_MALFORMED = 1
 EXIT_STATUS_PREDICTIONS_MALFORMED = 2
 EXIT_STATUS_PREDICTIONS_EXTRA = 3
 EXIT_STATUS_PREDICTION_MISSING = 4
-
 
 def _get_ngrams(segment, max_order):
     """Extracts all n-grams upto a given maximum order from an input segment.
@@ -219,9 +221,6 @@ def read_predictions(filename: str) -> List[List[str]]:
 
 
 def own_bleu_score(predictions, references, max_order=4, smooth=False):
-    from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
-    from nltk import word_tokenize
-
     '''
     reference_corpus = []
     prediction_corpus = []
@@ -252,8 +251,14 @@ def own_bleu_score(predictions, references, max_order=4, smooth=False):
         counter += 1
         scores.append(sentence_bleu(references, translation, weights=(0,0,0,1)))
     '''
-    references = [word_tokenize(reference) for reference in references]
-    predictions = word_tokenize(predictions[0])
+    # to be able to load punkt tokenizer from local folder even if on cluster
+    original_dir = os.getcwd()
+    execution_dir = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(execution_dir)
+    references = [nltk.word_tokenize(reference) for reference in references]
+    predictions = nltk.word_tokenize(predictions[0])
+    # change directory back after nltk tokenizers have been applied
+    os.chdir(original_dir)
     scores = sentence_bleu(references, predictions, weights=(0,0,0,1))
     return scores
 

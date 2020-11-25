@@ -1,9 +1,12 @@
 import numpy as np
 from Scoring.Scores import MoverScore, BLEUScore
 from Visualization.visuals import Visualizor
+import os
 
-reference_path = "Data/kalm_data/references/subtaskC_gold_answers.csv"
-prediction_path = "Data/kalm_data/predictions/subtaskC_answers.csv"
+execution_dir = os.path.dirname(os.path.abspath(__file__))
+print(execution_dir)
+reference_path = execution_dir + "/Data/kalm_data/references/subtaskC_gold_answers.csv"
+prediction_path = execution_dir + "/Data/kalm_data/predictions/subtaskC_answers.csv"
 
 ## -------- Mover Score --------
 

@@ -1,0 +1,7 @@
+moverscore
+nltk
+sacremoses
+pandas
+seaborn
+pyemd
+transformers
