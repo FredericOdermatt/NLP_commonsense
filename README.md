@@ -58,5 +58,8 @@ bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< 
 
 ## Working with submodules
 
-The submodules are their own git-repo. Any change inside KaLM should be added and commit first inside KaLM. \
-Then in a second step you can `git add KaLM` in the main folder and commit this change.
+The submodules are their own git-repo. Any change inside KaLM should be added, commited and pushed first inside KaLM. \
+Then in a second step you can `git add KaLM` in the main folder and commit this change. To update submodules that were changed run
+```bash
+git submodule update
+```
