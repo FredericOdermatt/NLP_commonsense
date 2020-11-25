@@ -17,8 +17,8 @@ git submodule update --init
 To have clean environments we use conda, install miniconda from the official website
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-chmod +x Miniconda3-latest-Linux-x86.sh
-./Miniconda3-latest-Linux-x86.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
 ```
 
 restart shell to make conda work after  `conda init`
@@ -35,6 +35,18 @@ conda install pytorch==1.4.0 torchvision==0.5.0 -c pytorch
 Install fairseq which is a submodule of the cloned gitrepo
 ```bash
 pip install -e fairseq
+```
+
+Install packages for scores
+```bash
+pip install moverscore
+pip install nltk
+```
+
+To run the nltk tokenization open the python console and enter:
+```bash
+import nltk
+nltk.download('punkt')
 ```
 
 Execute 
