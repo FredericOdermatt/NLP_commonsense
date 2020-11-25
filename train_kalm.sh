@@ -20,7 +20,7 @@ fairseq-train ./KaLM/preprocess_taskC_data/subtaskC_data-bin \
     --task translation \
     --source-lang source --target-lang target \
     --truncate-source \
-    --num-workers 4 \
+    --num-workers 10 \
     --layernorm-embedding \
     --share-all-embeddings \
     --share-decoder-input-output-embed \
@@ -38,6 +38,6 @@ fairseq-train ./KaLM/preprocess_taskC_data/subtaskC_data-bin \
     --find-unused-parameters \
     --ddp-backend=no_c10d \
     --disable-validation \
-    --log-format simple 2>&1 | tee ~/train.log
+    --log-format simple
 
 #--no-epoch-checkpoints \
