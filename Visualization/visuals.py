@@ -1,22 +1,21 @@
 import seaborn as sns
 import pandas as pd
+import matplotlib.pyplot as plt
 
 class Visualizor:
     def __init__(self):
         pass
 
-    def plot_hist(self, scores):
+    def plot_hist(self, scores, outfile_name="hist"):
         hist = sns.displot(scores)
-        hist.set(xlabel='Mover Score')
-        hist.savefig("score_hist.png")
-
+        hist.set(xlabel='Score')
+        hist.savefig(outfile_name + ".png")
         pass
 
     def plot_joint(self, score1, score2):
         joint_data = pd.DataFrame({"score1": score1, "score2": score2})
-        hist = sns.pairplot(joint_data)
-        hist.set(xlabel='Scores')
-        hist.savefig("pairplot.png")
-
+        pair = sns.pairplot(joint_data)
+        pair.set(xlabel='Scores')
+        pair.savefig("pairplot.png")
         pass
         
