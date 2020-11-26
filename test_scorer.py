@@ -21,8 +21,8 @@ print("BLEU Scores for similarity: ", np.mean(BS.scores))
 
 ## Plotting results
 
+vis = Visualizor()
 vis.plot_hist(MS.scores, outfile_name="MS_hist")
 vis.plot_hist(BS.scores, outfile_name="BS_hist")
-vis = Visualizor()
 # TODO make scores of same length
 # vis.plot_joint(MS.scores, BS.scores)

@@ -71,13 +71,12 @@ bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< 
 
 Execute the following locally (not on the cluster). It allows you to interactively submit input sentences to the trained model and see the output.
 ```bash
-./evaluate_kalm.sh
-...
+./evaluate_kalm.sh $SCRATCH/KaLM/trained_models/checkpoint1.pt
 ...
 2020-11-25 18:21:19 | INFO | fairseq_cli.interactive | Type the input sentence and press return:
 The submarine is delicious.
 ...
-There is no way to be eaten in the sky.
+Output: There is no way to be eaten in the sky.
 ```
 
 ## Notes
