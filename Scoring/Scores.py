@@ -1,10 +1,16 @@
 import os
 import pandas as pd
 import numpy as np
-from collections import defaultdict
-from Scoring.BLEUScore import own_bleu_score, challenge_score
-from Visualization.visuals import Visualizor
 
+# BLEU Score
+from Scoring.BLEUScore import own_bleu_score, challenge_score
+
+# Mover Score
+from moverscore_v2 import get_idf_dict, word_mover_score, plot_example
+from collections import defaultdict
+
+# Rouge Score
+#from rouge_score import rouge_scorer
 
 
 class Scorer:
@@ -81,8 +87,6 @@ class MoverScore(Scorer):
         self.compute_scores()
 
     def compute_scores(self):
-        from moverscore_v2 import get_idf_dict, word_mover_score, plot_example
-        from collections import defaultdict
         # only import these module if object instantiated
         # demands GPU 
 
@@ -115,8 +119,6 @@ class RougeScore(Scorer):
         self.compute_scores()
         
     def compute_scores(self):
-
-        from rouge_score import rouge_scorer
         self.preprocess()
         
         scorer = rouge_scorer.RougeScorer(["rouge2"], use_stemmer=True)

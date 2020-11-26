@@ -1,3 +1,11 @@
+# CommonSense Reason Generation
+
+In this repository we are looking at the task of generating reasons explaining why a statement is against common-sense.
+
+I.e. given an input "He eats the submarine." the model should return something along the lines of "Submarines are not edible." or similar.
+
+We follow the challenge given in [SemEval 2020 Task C](https://competitions.codalab.org/competitions/21080#learn_the_details).
+
 # Installation
 
 This installation is for now made specifically for a node on Leonhard.
@@ -37,27 +45,40 @@ Install fairseq which is a submodule of the cloned gitrepo
 pip install -e fairseq
 ```
 
-Install packages for scores
+Install other requirements
 ```bash
-pip install moverscore
-pip install nltk
+pip install -r requirements.txt
 ```
 
-To run the nltk tokenization open the python console and enter:
+
+To download the nltk tokenizer 'punkt' execute the provided script
 ```bash
-import nltk
-nltk.download('punkt')
+chmod +x setup_punkt.sh
+./setup_punkt.sh
 ```
 
-Execute 
+# Training KaLM
 ```bash
-bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< "NLP/KaLM/train3.sh"
+bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< "NLP_commonsense/train_kalm.sh"
 ```
 
 * -o: name of output file (should end in .out)
 * -R: requirements for GPU
 * -J: job name, useful for overview and to use bpeek
 * -W: how much time is given to the job
+
+# Evaluate Trained KaLM Model
+
+Execute the following locally (not on the cluster). It allows you to interactively submit input sentences to the trained model and see the output.
+```bash
+./evaluate_kalm.sh
+...
+...
+2020-11-25 18:21:19 | INFO | fairseq_cli.interactive | Type the input sentence and press return:
+The submarine is delicious.
+...
+There is no way to be eaten in the sky.
+```
 
 ## Notes
 
@@ -70,5 +91,8 @@ bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< 
 
 ## Working with submodules
 
-The submodules are their own git-repo. Any change inside KaLM should be added and commit first inside KaLM. \
-Then in a second step you can `git add KaLM` in the main folder and commit this change.
+The submodules are their own git-repo. Any change inside KaLM should be added, commited and pushed first inside KaLM. \
+Then in a second step you can `git add KaLM` in the main folder and commit this change. To update submodules that were changed run
+```bash
+git submodule update
+```
