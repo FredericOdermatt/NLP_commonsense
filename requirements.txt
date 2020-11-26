@@ -5,3 +5,4 @@ pandas
 seaborn
 pyemd
 transformers
+rouge-score

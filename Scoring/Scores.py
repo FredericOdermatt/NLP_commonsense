@@ -10,7 +10,7 @@ from moverscore_v2 import get_idf_dict, word_mover_score, plot_example
 from collections import defaultdict
 
 # Rouge Score
-#from rouge_score import rouge_scorer
+from rouge_score import rouge_scorer
 
 
 class Scorer:
@@ -31,8 +31,8 @@ class Scorer:
         elif not os.path.isfile(reference_path):
             raise ImportError ('File '+ reference_path +' does not exist.')
 
-        self.predictions_df = pd.read_csv(prediction_path, index_col = 0)
-        self.references_df = pd.read_csv(reference_path, index_col = 0)
+        self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'])
+        self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'])
 
         if len(self.predictions_df) != len(self.references_df):
             raise ValueError("Number of reference and generated reasons do not match.")
