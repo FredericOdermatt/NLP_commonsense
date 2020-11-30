@@ -5,10 +5,6 @@ import numpy as np
 # BLEU Score
 from Scoring.BLEUScore import own_bleu_score, challenge_score
 
-# Mover Score
-from moverscore_v2 import get_idf_dict, word_mover_score, plot_example
-from collections import defaultdict
-
 # Rouge Score
 from rouge_score import rouge_scorer
 
@@ -51,20 +47,29 @@ class Scorer:
 
     @property
     def scores(self):
-        return self._scores 
+        # reducing length of floats otherwise memory errors occur
+        return list(map(lambda a: round(a,5), self._scores))
 
 
     
 class BLEUScore(Scorer):
-    def __init__(self, prediction_path, reference_path):
+    def __init__(self, prediction_path, reference_path, which="own"):
+        self.which = which
         super().__init__(prediction_path, reference_path)
         self.compute_scores()
 
     def compute_scores(self):
         self.preprocess()
 
-        for prediction, reference_triplet in zip(self._predictions, self._references):
-            self._scores.append(own_bleu_score(predictions=prediction, references=reference_triplet))
+        if self.which == "challenge":
+            self._scores.append(self.compute_challenge_score())
+        else:
+            for prediction, reference_triplet in zip(self._predictions, self._references):
+                self._scores.append(own_bleu_score(predictions=prediction, references=reference_triplet))
+
+    def compute_challenge_score(self):
+        scores, precisions = challenge_score(self.reference_path, self.prediction_path)
+        return scores
 
     def preprocess(self):
         self._predictions = self.predictions_df.values
@@ -84,10 +89,13 @@ class MoverScore(Scorer):
 
     def __init__(self, prediction_path, reference_path):
         super().__init__(prediction_path, reference_path)
+
         self.compute_scores()
 
     def compute_scores(self):
         # only import these module if object instantiated
+        from moverscore_v2 import get_idf_dict, word_mover_score, plot_example
+        from collections import defaultdict
         # demands GPU 
 
         # Beispiel Sätze

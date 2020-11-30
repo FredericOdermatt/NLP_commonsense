@@ -77,6 +77,8 @@ def _compute_bleu(reference_corpus, translation_corpus, max_order=4, smooth=Fals
                 possible_matches_by_order[order-1] += possible_matches
 
     precisions = [0] * max_order
+
+    # take geometric mean over the different n-grams
     for i in range(0, max_order):
         if smooth:
             precisions[i] = ((matches_by_order[i] + 1.) /
@@ -121,7 +123,6 @@ def calculate_bleu(references: Dict[str, List[List[str]]],
             sys.exit(EXIT_STATUS_PREDICTION_MISSING)
 
         del predictions[instance_id]
-
         prediction_corpus.append(prediction_sent)
         reference_corpus.append(reference_sents)
 
@@ -137,9 +138,9 @@ def calculate_bleu(references: Dict[str, List[List[str]]],
 
 def read_references(filename: str) -> List[List[List[str]]]:
     references = {}
-    assert os.path.exists(os.getenv("HOME") + filename)
+    assert os.path.exists(filename)
 
-    with open(os.getenv("HOME")+filename, "rt", encoding="UTF-8", errors="replace") as f:
+    with open(filename, "rt", encoding="UTF-8", errors="replace") as f:
         reader = csv.reader(f)
         try:
             for row in reader:
@@ -184,8 +185,8 @@ def read_references(filename: str) -> List[List[List[str]]]:
 
 def read_predictions(filename: str) -> List[List[str]]:
     predictions = {}
-    assert os.path.exists(os.getenv("HOME")+filename)
-    with open(os.getenv("HOME")+filename, "rt", encoding="UTF-8", errors="replace") as f:
+    assert os.path.exists(filename)
+    with open(filename, "rt", encoding="UTF-8", errors="replace") as f:
         reader = csv.reader(f)
         try:
             for row in reader:
@@ -255,24 +256,33 @@ def own_bleu_score(predictions, references, max_order=4, smooth=False):
     original_dir = os.getcwd()
     execution_dir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(execution_dir)
-    references = [nltk.word_tokenize(reference) for reference in references]
-    predictions = nltk.word_tokenize(predictions[0])
+    '''
+    compl_ref = ""
+    for ref in references:
+        compl_ref += ref + " "
+    
+    references = nltk.word_tokenize(compl_ref)
+    '''
+
+    references = [nltk.word_tokenize(reference.strip('.')) for reference in references]
+    #references = [reference.split() for reference in references]
+    predictions = nltk.word_tokenize(predictions[0].strip('.'))
+    #predictions = predictions[0].split()
     # change directory back after nltk tokenizers have been applied
     os.chdir(original_dir)
-    scores = sentence_bleu(references, predictions, weights=(0,0,0,1))
+    # original bleu score uses constant weights
+    #print(references[0])
+    #scores = corpus_bleu([references], [predictions])
+    scores = sentence_bleu(references, predictions)
     return scores
 
 
 # Either call this function to get the challenge values which are strange yet
 def challenge_score(reference_path, predictions_path):
     references = read_references(reference_path)
-    predictions = read_predictions(reference_path)
-    #score, precisions = calculate_bleu(references, predictions,
-    #                      max_order=4, smooth=False)
+    predictions = read_predictions(predictions_path)
+    score, precisions = calculate_bleu(references, predictions,
+                          max_order=4, smooth=False)
 
-    print(references.shape)
-    #scores = corpus_bleu(references, predictions)
-
-    print(precisions)
     #print(f'BLEU score: {score_dic['scores']*100:.4f}.')
-    return scores
+    return (score, precisions)
