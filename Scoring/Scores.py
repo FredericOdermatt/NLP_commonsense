@@ -115,20 +115,36 @@ class MoverScore(Scorer):
 
 
 class RougeScore(Scorer):
-    def __init__(self, prediction_path, reference_path):
+    def __init__(self, prediction_path, reference_path, rouge_type = ['rouge2',2]):
         super().__init__(prediction_path, reference_path)
+        self.rouge_type = rouge_type
         self.compute_scores()
+        
         
     def compute_scores(self):
         self.preprocess()
         
-        scorer = rouge_scorer.RougeScorer(['rouge2'], use_stemmer=True)
-        
-        self._scores = list(map(lambda x,y: scorer.score(x,y)['rouge2'][2], self._references, self._predictions))
-
+        scorer = rouge_scorer.RougeScorer([self.rouge_type[0]], use_stemmer=True)
+        self._scores = list(map(lambda p,x,y,z: max(scorer.score(p,x)[self.rouge_type[0]][self.rouge_type[1]], 
+                                                    scorer.score(p,y)[self.rouge_type[0]][self.rouge_type[1]],
+                                                    scorer.score(p,z)[self.rouge_type[0]][self.rouge_type[1]]), 
+                                                    self._predictions, self._references[0], self._references[1], self._references[2]))
     def preprocess(self):
-        predictions_array = pd.concat([self.predictions_df, self.predictions_df, self.predictions_df], axis=1).to_numpy()
-        references_array = self.references_df.to_numpy()
+        predictions_array = self.predictions_df.to_numpy()
         self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
-        self._references = references_array.reshape((np.prod(predictions_array.shape),)).tolist()
 
+        references_array = self.references_df.to_numpy()
+        self._references = references_array.T.tolist()
+    
+    def print_bad_results(self, shown_elems=3):
+        
+        idx = np.argpartition(self._scores, shown_elems)
+
+        for i in idx[:shown_elems]:
+            print("References:     ", self._references[0][i], ", ", self._references[1][i],", ", self._references[2][i], "\n")
+            print("Answer:     : ", self._predictions[i], "\n")
+            print("ROUGE Score:     : ", self._scores[i], ",", self.rouge_type, "\n")
+            print("Row Index:     : ", self.references_df.index[int(i)], "\n")
+            print("------------------------------------\n")
+
+                
