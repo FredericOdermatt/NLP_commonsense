@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from collections import defaultdict
 from Scoring.BLEUScore import own_bleu_score, challenge_score
-from Visualization.visuals import Visualizor
+#from Visualization.visuals import Visualizor
 
 
 
@@ -108,7 +108,8 @@ class MoverScore(Scorer):
             print("Mover Answer:     : ", self._predictions[i], "\n")
             print("Mover Row Index:     : ", self.references_df.index[int(i/3.)], "\n")
             print("------------------------------------\n") 
-        
+
+
 class RougeScore(Scorer):
     def __init__(self, prediction_path, reference_path):
         super().__init__(prediction_path, reference_path)
@@ -119,13 +120,13 @@ class RougeScore(Scorer):
         from rouge_score import rouge_scorer
         self.preprocess()
         
-        scorer = rouge_scorer.RougeScorer(["rouge2"], use_stemmer=True)
-        self._scores = self.data_converted.apply(lambda x: scorer.score(x['reference'], x['prediction'])["rouge2"], axis = 1, result_type = 'expand')
-        self._scores.rename(columns={0: 'precision', 1: 'recall', 2: 'fmeasure'})
+        scorer = rouge_scorer.RougeScorer(['rouge2'], use_stemmer=True)
+        
+        self._scores = list(map(lambda x,y: scorer.score(x,y)['rouge2'][2], self._references, self._predictions))
 
     def preprocess(self):
-        
-        self.data_converted = pd.concat([self.predictions_df, self.reference_df.iloc[:,0]], axis=1, join='inner')
-        self.data_converted = self.data_converted.append([pd.concat([prediction_df, reference_df.iloc[:,1]], axis=1, join='inner'),
-                                                          pd.concat([prediction_df, reference_df.iloc[:,2]], axis=1, join='inner')])
-        self.data_converted.columns = ['prediction', 'reference']
+        predictions_array = pd.concat([self.predictions_df, self.predictions_df, self.predictions_df], axis=1).to_numpy()
+        references_array = self.references_df.to_numpy()
+        self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
+        self._references = references_array.reshape((np.prod(predictions_array.shape),)).tolist()
+
