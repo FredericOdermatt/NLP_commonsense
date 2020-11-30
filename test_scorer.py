@@ -1,6 +1,9 @@
 import numpy as np
+
 from Scoring.Scores import MoverScore, BLEUScore
 from Visualization.visuals import Visualizor
+
+from Scoring.Scores import RougeScore
 import os
 
 execution_dir = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +23,12 @@ print("BLEU Scores for similarity: ", np.mean(BS.scores))
 
 ## -------- Rouge Score --------
 RS = RougeScore(prediction_path, reference_path)
+#RS = RougeScore(prediction_path, reference_path, rouge_type = ['rouge2',2]) 
+# possible values for rouge_type[0] = ['rouge1',..., 'rouge9', 'rougeL']
+# possible values for rouge_type[1] = [0,1,2], 0: recall (ROUGE), 1: precision (BLEU), 2: fmeasure
+
 print("Rouge Scores for similarity: ", np.mean(RS.scores))
+RS.print_bad_results()
 
 
 ## Plotting results
