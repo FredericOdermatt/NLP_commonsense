@@ -12,10 +12,10 @@ class Visualizor:
         hist.savefig(outfile_name + ".png")
         pass
 
-    def plot_joint(self, score1, score2):
-        joint_data = pd.DataFrame({"score1": score1, "score2": score2})
+    def plot_joint(self, scores, names):
+        score_dic = {name : score for name, score in zip(names, scores)}
+        joint_data = pd.DataFrame(score_dic)
         pair = sns.pairplot(joint_data)
-        pair.set(xlabel='Scores')
         pair.savefig("pairplot.png")
         pass
         
