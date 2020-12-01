@@ -1,9 +1,8 @@
 import numpy as np
 
-from Scoring.Scores import MoverScore, BLEUScore
+from Scoring.Scores import MoverScore, BLEUScore, RougeScore
 from Visualization.visuals import Visualizor
 
-from Scoring.Scores import RougeScore
 import os
 
 execution_dir = os.path.dirname(os.path.abspath(__file__))
