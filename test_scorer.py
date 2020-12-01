@@ -10,10 +10,12 @@ execution_dir = os.path.dirname(os.path.abspath(__file__))
 reference_path = execution_dir + "/Data/kalm_data/references/subtaskC_gold_answers.csv"
 prediction_path = execution_dir + "/Data/kalm_data/predictions/subtaskC_answers.csv"
 
+
 ## -------- Mover Score --------
 MS = MoverScore(prediction_path, reference_path)
 print("Mover Scores for similarity: ", np.mean(MS.scores))
 MS.print_bad_results()
+
 
 ## -------- BLEU Score --------
 # chose score "own" or "challenge" uncomment print bad results
@@ -34,7 +36,8 @@ RS.print_bad_results()
 ## Plotting results
 
 vis = Visualizor()
-#vis.plot_hist(MS.scores, outfile_name="MS_hist")
+vis.plot_hist(MS.scores, outfile_name="MS_hist")
 vis.plot_hist(BS.scores, outfile_name="BS_hist")
-# TODO make scores of same length
-# vis.plot_joint(MS.scores, BS.scores)
+scores = [MS.scores, BS.scores, RS.scores]
+names = ["Mover Score", "BLEU Score", "Rouge Score"]
+vis.plot_joint(scores=scores, names=names)

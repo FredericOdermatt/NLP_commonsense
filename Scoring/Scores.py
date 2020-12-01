@@ -84,7 +84,6 @@ class BLEUScore(Scorer):
             print("------------------------------------\n")
 
 
-
 class MoverScore(Scorer):
 
     def __init__(self, prediction_path, reference_path):
@@ -102,16 +101,19 @@ class MoverScore(Scorer):
         # predictions = ["A rabbit can not fly because he has no wings.", "The rabbit is running over the moon.","Having breakfast is genious since cheese is delicous."]
         # references = ["The rabbit is not a bird.","Showing mercy is not an option.", "The dinner was very good because the meat was very tender."]
         self.preprocess()
-
         idf_dict_hyp = get_idf_dict(self._predictions)
         idf_dict_ref = get_idf_dict(self._references)
-        self._scores = word_mover_score(self._references, self._predictions, idf_dict_ref, idf_dict_hyp, stop_words=["."], n_gram=4, remove_subwords=True)
+        all_scores = word_mover_score(self._references, self._predictions, idf_dict_ref, idf_dict_hyp, stop_words=["."], n_gram=4, remove_subwords=True)
+        all_scores = np.array(all_scores).reshape((-1,3))
+        self._scores = np.max(all_scores, axis=1)
 
     def preprocess(self):
         predictions_array = pd.concat([self.predictions_df, self.predictions_df, self.predictions_df], axis=1).to_numpy()
         references_array = self.references_df.to_numpy()
-        self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
-        self._references = references_array.reshape((np.prod(predictions_array.shape),)).tolist()
+        # self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
+        self._predictions = predictions_array.flatten()
+        self._references = references_array.flatten()
+        #self._references = references_array.reshape((np.prod(predictions_array.shape),)).tolist()
 
     def print_bad_results(self, shown_elems=3):
         idx = np.argpartition(self._scores, shown_elems)
@@ -137,6 +139,7 @@ class RougeScore(Scorer):
                                                     scorer.score(p,y)[self.rouge_type[0]][self.rouge_type[1]],
                                                     scorer.score(p,z)[self.rouge_type[0]][self.rouge_type[1]]), 
                                                     self._predictions, self._references[0], self._references[1], self._references[2]))
+
     def preprocess(self):
         predictions_array = self.predictions_df.to_numpy()
         self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
