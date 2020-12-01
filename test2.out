@@ -1,0 +1,598 @@
+Sender: LSF System <lsfadmin@lo-s4-009>
+Subject: Job 12149175: <first_test> in cluster <leonhard> Exited
+
+Job <first_test> was submitted from host <lo-login-01> by user <jbernstorff> in cluster <leonhard> at Fri Nov 20 14:23:46 2020
+Job was executed on host(s) <lo-s4-009>, in queue <gpu.4h>, as user <jbernstorff> in cluster <leonhard> at Fri Nov 20 14:23:49 2020
+</cluster/home/jbernstorff> was used as the home directory.
+</cluster/home/jbernstorff/NLP_commonsense> was used as the working directory.
+Started at Fri Nov 20 14:23:49 2020
+Terminated at Fri Nov 20 14:53:37 2020
+Results reported at Fri Nov 20 14:53:37 2020
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+KaLM/train3.sh
+
+------------------------------------------------------------
+
+TERM_MEMLIMIT: job killed after reaching LSF memory usage limit.
+Exited with signal termination: 25.
+
+Resource usage summary:
+
+    CPU time :                                   1822.63 sec.
+    Max Memory :                                 8164 MB
+    Average Memory :                             3329.02 MB
+    Total Requested Memory :                     8164.00 MB
+    Delta Memory :                               0.00 MB
+    Max Swap :                                   -
+    Max Processes :                              7
+    Max Threads :                                17
+    Run time :                                   1805 sec.
+    Turnaround time :                            1791 sec.
+
+The output (if any) follows:
+
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  418.39  Sat Feb  9 19:19:37 CST 2019
+GCC version:  gcc version 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC) 
+CUDA_VISIBLE_DEVICES:  0
+2020-11-20 14:23:57 | INFO | fairseq_cli.train | {'common': {'_name': None, 'no_progress_bar': False, 'log_interval': 100, 'log_format': 'simple', 'tensorboard_logdir': None, 'wandb_project': None, 'seed': 1, 'cpu': False, 'tpu': False, 'bf16': False, 'memory_efficient_bf16': False, 'fp16': True, 'memory_efficient_fp16': True, 'fp16_no_flatten_grads': False, 'fp16_init_scale': 128, 'fp16_scale_window': None, 'fp16_scale_tolerance': 0.0, 'min_loss_scale': 0.0001, 'threshold_loss_scale': None, 'user_dir': None, 'empty_cache_freq': 0, 'all_gather_list_size': 16384, 'model_parallel_size': 1, 'quantization_config_path': None, 'profile': False}, 'common_eval': {'_name': None, 'path': None, 'post_process': None, 'quiet': False, 'model_overrides': '{}', 'results_path': None}, 'distributed_training': {'_name': None, 'distributed_world_size': 1, 'distributed_rank': 0, 'distributed_backend': 'nccl', 'distributed_init_method': None, 'distributed_port': -1, 'device_id': 0, 'local_rank': 0, 'distributed_no_spawn': False, 'ddp_backend': 'no_c10d', 'bucket_cap_mb': 25, 'fix_batches_to_gpus': False, 'find_unused_parameters': True, 'fast_stat_sync': False, 'broadcast_buffers': False, 'distributed_wrapper': 'DDP', 'slowmo_momentum': None, 'slowmo_algorithm': 'LocalSGD', 'localsgd_frequency': 3, 'nprocs_per_node': 1, 'pipeline_model_parallel': False, 'pipeline_balance': None, 'pipeline_devices': None, 'pipeline_chunks': 0, 'pipeline_encoder_balance': None, 'pipeline_encoder_devices': None, 'pipeline_decoder_balance': None, 'pipeline_decoder_devices': None, 'pipeline_checkpoint': 'never', 'zero_sharding': 'none', 'tpu': False, 'distributed_num_procs': 1}, 'dataset': {'_name': None, 'num_workers': 1, 'skip_invalid_size_inputs_valid_test': True, 'max_tokens': 100, 'batch_size': None, 'required_batch_size_multiple': 1, 'required_seq_len_multiple': 1, 'dataset_impl': None, 'data_buffer_size': 10, 'train_subset': 'train', 'valid_subset': 'valid', 'validate_interval': 1, 'validate_interval_updates': 0, 'validate_after_updates': 0, 'fixed_validation_seed': None, 'disable_validation': True, 'max_tokens_valid': 100, 'batch_size_valid': None, 'curriculum': 0, 'gen_subset': 'test', 'num_shards': 1, 'shard_id': 0}, 'optimization': {'_name': None, 'max_epoch': 0, 'max_update': 0, 'stop_time_hours': 0.0, 'clip_norm': 0.1, 'sentence_avg': False, 'update_freq': [1], 'lr': [3e-05], 'min_lr': -1.0, 'use_bmuf': False}, 'checkpoint': {'_name': None, 'save_dir': '/cluster/scratch/jbernstorff/KaLM/', 'restore_file': './bart.large/model.pt', 'finetune_from_model': None, 'reset_dataloader': True, 'reset_lr_scheduler': False, 'reset_meters': True, 'reset_optimizer': True, 'optimizer_overrides': '{}', 'save_interval': 1, 'save_interval_updates': 0, 'keep_interval_updates': -1, 'keep_last_epochs': -1, 'keep_best_checkpoints': -1, 'no_save': False, 'no_epoch_checkpoints': False, 'no_last_checkpoints': False, 'no_save_optimizer_state': False, 'best_checkpoint_metric': 'loss', 'maximize_best_checkpoint_metric': False, 'patience': -1, 'checkpoint_suffix': '', 'checkpoint_shard_count': 1, 'model_parallel_size': 1, 'distributed_rank': 0}, 'bmuf': {'_name': None, 'block_lr': 1.0, 'block_momentum': 0.875, 'global_sync_iter': 50, 'warmup_iterations': 500, 'use_nbm': False, 'average_sync': False, 'distributed_world_size': 1}, 'generation': {'_name': None, 'beam': 5, 'nbest': 1, 'max_len_a': 0.0, 'max_len_b': 200, 'min_len': 1, 'match_source_len': False, 'unnormalized': False, 'no_early_stop': False, 'no_beamable_mm': False, 'lenpen': 1.0, 'unkpen': 0.0, 'replace_unk': None, 'sacrebleu': False, 'score_reference': False, 'prefix_size': 0, 'no_repeat_ngram_size': 0, 'sampling': False, 'sampling_topk': -1, 'sampling_topp': -1.0, 'constraints': None, 'temperature': 1.0, 'diverse_beam_groups': -1, 'diverse_beam_strength': 0.5, 'diversity_rate': -1.0, 'print_alignment': False, 'print_step': False, 'lm_path': None, 'lm_weight': 0.0, 'iter_decode_eos_penalty': 0.0, 'iter_decode_max_iter': 10, 'iter_decode_force_max_iter': False, 'iter_decode_with_beam': 1, 'iter_decode_with_external_reranker': False, 'retain_iter_history': False, 'retain_dropout': False, 'retain_dropout_modules': None, 'decoding_format': None, 'no_seed_provided': False}, 'eval_lm': {'_name': None, 'output_word_probs': False, 'output_word_stats': False, 'context_window': 0, 'softmax_batch': 9223372036854775807}, 'interactive': {'_name': None, 'buffer_size': 0, 'input': '-'}, 'model': Namespace(_name='bart_large', activation_fn='gelu', adam_betas='(0.9, 0.999)', adam_eps=1e-08, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, arch='bart_large', attention_dropout=0.1, batch_size=None, batch_size_valid=None, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.1, cpu=False, criterion='label_smoothed_cross_entropy', cross_self_attention=False, curriculum=0, data='./preprocess_taskC_data/subtaskC_data-bin', data_buffer_size=10, dataset_impl=None, ddp_backend='no_c10d', decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_input_dim=1024, decoder_layerdrop=0, decoder_layers=12, decoder_layers_to_keep=None, decoder_learned_pos=True, decoder_normalize_before=False, decoder_output_dim=1024, device_id=0, disable_validation=True, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=1, distributed_wrapper='DDP', dropout=0.1, empty_cache_freq=0, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layerdrop=0, encoder_layers=12, encoder_layers_to_keep=None, encoder_learned_pos=True, encoder_normalize_before=False, end_learning_rate=0.0, eos=2, eval_bleu=False, eval_bleu_args=None, eval_bleu_detok='space', eval_bleu_detok_args=None, eval_bleu_print_samples=False, eval_bleu_remove_bpe=None, eval_tokenized_bleu=False, fast_stat_sync=False, find_unused_parameters=True, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='test', ignore_prefix_size=0, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_last_epochs=-1, label_smoothing=0.1, layernorm_embedding=True, left_pad_source='True', left_pad_target='False', load_alignments=False, local_rank=0, localsgd_frequency=3, log_format='simple', log_interval=100, lr=[3e-05], lr_scheduler='polynomial_decay', max_epoch=0, max_source_positions=1024, max_target_positions=1024, max_tokens=100, max_tokens_valid=100, max_update=0, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=True, min_loss_scale=0.0001, min_lr=-1.0, model_parallel_size=1, no_cross_attention=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=True, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=1, num_batch_buckets=0, num_shards=1, num_workers=1, optimizer='adam', optimizer_overrides='{}', pad=1, patience=-1, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, pooler_activation_fn='tanh', pooler_dropout=0.0, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, relu_dropout=0.0, report_accuracy=False, required_batch_size_multiple=1, required_seq_len_multiple=1, reset_dataloader=True, reset_lr_scheduler=False, reset_meters=True, reset_optimizer=True, restore_file='./bart.large/model.pt', save_dir='/cluster/scratch/jbernstorff/KaLM/', save_interval=1, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=True, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, source_lang='source', stop_time_hours=0, target_lang='target', task='translation', tensorboard_logdir=None, threshold_loss_scale=None, tokenizer=None, total_num_update=200000, tpu=False, train_subset='train', truncate_source=True, unk=3, update_freq=[1], upsample_primary=1, use_bmuf=False, use_old_adam=False, user_dir=None, valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_updates=500, weight_decay=0.01, zero_sharding='none'), 'task': Namespace(_name='translation', activation_fn='gelu', adam_betas='(0.9, 0.999)', adam_eps=1e-08, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, arch='bart_large', attention_dropout=0.1, batch_size=None, batch_size_valid=None, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.1, cpu=False, criterion='label_smoothed_cross_entropy', cross_self_attention=False, curriculum=0, data='./preprocess_taskC_data/subtaskC_data-bin', data_buffer_size=10, dataset_impl=None, ddp_backend='no_c10d', decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_input_dim=1024, decoder_layerdrop=0, decoder_layers=12, decoder_layers_to_keep=None, decoder_learned_pos=True, decoder_normalize_before=False, decoder_output_dim=1024, device_id=0, disable_validation=True, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=1, distributed_wrapper='DDP', dropout=0.1, empty_cache_freq=0, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layerdrop=0, encoder_layers=12, encoder_layers_to_keep=None, encoder_learned_pos=True, encoder_normalize_before=False, end_learning_rate=0.0, eos=2, eval_bleu=False, eval_bleu_args=None, eval_bleu_detok='space', eval_bleu_detok_args=None, eval_bleu_print_samples=False, eval_bleu_remove_bpe=None, eval_tokenized_bleu=False, fast_stat_sync=False, find_unused_parameters=True, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='test', ignore_prefix_size=0, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_last_epochs=-1, label_smoothing=0.1, layernorm_embedding=True, left_pad_source='True', left_pad_target='False', load_alignments=False, local_rank=0, localsgd_frequency=3, log_format='simple', log_interval=100, lr=[3e-05], lr_scheduler='polynomial_decay', max_epoch=0, max_source_positions=1024, max_target_positions=1024, max_tokens=100, max_tokens_valid=100, max_update=0, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=True, min_loss_scale=0.0001, min_lr=-1.0, model_parallel_size=1, no_cross_attention=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=True, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=1, num_batch_buckets=0, num_shards=1, num_workers=1, optimizer='adam', optimizer_overrides='{}', pad=1, patience=-1, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, pooler_activation_fn='tanh', pooler_dropout=0.0, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, relu_dropout=0.0, report_accuracy=False, required_batch_size_multiple=1, required_seq_len_multiple=1, reset_dataloader=True, reset_lr_scheduler=False, reset_meters=True, reset_optimizer=True, restore_file='./bart.large/model.pt', save_dir='/cluster/scratch/jbernstorff/KaLM/', save_interval=1, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=True, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, source_lang='source', stop_time_hours=0, target_lang='target', task='translation', tensorboard_logdir=None, threshold_loss_scale=None, tokenizer=None, total_num_update=200000, tpu=False, train_subset='train', truncate_source=True, unk=3, update_freq=[1], upsample_primary=1, use_bmuf=False, use_old_adam=False, user_dir=None, valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_updates=500, weight_decay=0.01, zero_sharding='none'), 'criterion': Namespace(_name='label_smoothed_cross_entropy', activation_fn='gelu', adam_betas='(0.9, 0.999)', adam_eps=1e-08, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, arch='bart_large', attention_dropout=0.1, batch_size=None, batch_size_valid=None, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.1, cpu=False, criterion='label_smoothed_cross_entropy', cross_self_attention=False, curriculum=0, data='./preprocess_taskC_data/subtaskC_data-bin', data_buffer_size=10, dataset_impl=None, ddp_backend='no_c10d', decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_input_dim=1024, decoder_layerdrop=0, decoder_layers=12, decoder_layers_to_keep=None, decoder_learned_pos=True, decoder_normalize_before=False, decoder_output_dim=1024, device_id=0, disable_validation=True, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=1, distributed_wrapper='DDP', dropout=0.1, empty_cache_freq=0, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layerdrop=0, encoder_layers=12, encoder_layers_to_keep=None, encoder_learned_pos=True, encoder_normalize_before=False, end_learning_rate=0.0, eos=2, eval_bleu=False, eval_bleu_args=None, eval_bleu_detok='space', eval_bleu_detok_args=None, eval_bleu_print_samples=False, eval_bleu_remove_bpe=None, eval_tokenized_bleu=False, fast_stat_sync=False, find_unused_parameters=True, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='test', ignore_prefix_size=0, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_last_epochs=-1, label_smoothing=0.1, layernorm_embedding=True, left_pad_source='True', left_pad_target='False', load_alignments=False, local_rank=0, localsgd_frequency=3, log_format='simple', log_interval=100, lr=[3e-05], lr_scheduler='polynomial_decay', max_epoch=0, max_source_positions=1024, max_target_positions=1024, max_tokens=100, max_tokens_valid=100, max_update=0, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=True, min_loss_scale=0.0001, min_lr=-1.0, model_parallel_size=1, no_cross_attention=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=True, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=1, num_batch_buckets=0, num_shards=1, num_workers=1, optimizer='adam', optimizer_overrides='{}', pad=1, patience=-1, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, pooler_activation_fn='tanh', pooler_dropout=0.0, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, relu_dropout=0.0, report_accuracy=False, required_batch_size_multiple=1, required_seq_len_multiple=1, reset_dataloader=True, reset_lr_scheduler=False, reset_meters=True, reset_optimizer=True, restore_file='./bart.large/model.pt', save_dir='/cluster/scratch/jbernstorff/KaLM/', save_interval=1, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=True, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, source_lang='source', stop_time_hours=0, target_lang='target', task='translation', tensorboard_logdir=None, threshold_loss_scale=None, tokenizer=None, total_num_update=200000, tpu=False, train_subset='train', truncate_source=True, unk=3, update_freq=[1], upsample_primary=1, use_bmuf=False, use_old_adam=False, user_dir=None, valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_updates=500, weight_decay=0.01, zero_sharding='none'), 'optimizer': {'_name': 'adam', 'adam_betas': '(0.9, 0.999)', 'adam_eps': 1e-08, 'weight_decay': 0.01, 'use_old_adam': False, 'tpu': False, 'lr': [3e-05]}, 'lr_scheduler': Namespace(_name='polynomial_decay', activation_fn='gelu', adam_betas='(0.9, 0.999)', adam_eps=1e-08, adaptive_softmax_cutoff=None, adaptive_softmax_dropout=0, all_gather_list_size=16384, arch='bart_large', attention_dropout=0.1, batch_size=None, batch_size_valid=None, best_checkpoint_metric='loss', bf16=False, bpe=None, broadcast_buffers=False, bucket_cap_mb=25, checkpoint_shard_count=1, checkpoint_suffix='', clip_norm=0.1, cpu=False, criterion='label_smoothed_cross_entropy', cross_self_attention=False, curriculum=0, data='./preprocess_taskC_data/subtaskC_data-bin', data_buffer_size=10, dataset_impl=None, ddp_backend='no_c10d', decoder_attention_heads=16, decoder_embed_dim=1024, decoder_embed_path=None, decoder_ffn_embed_dim=4096, decoder_input_dim=1024, decoder_layerdrop=0, decoder_layers=12, decoder_layers_to_keep=None, decoder_learned_pos=True, decoder_normalize_before=False, decoder_output_dim=1024, device_id=0, disable_validation=True, distributed_backend='nccl', distributed_init_method=None, distributed_no_spawn=False, distributed_port=-1, distributed_rank=0, distributed_world_size=1, distributed_wrapper='DDP', dropout=0.1, empty_cache_freq=0, encoder_attention_heads=16, encoder_embed_dim=1024, encoder_embed_path=None, encoder_ffn_embed_dim=4096, encoder_layerdrop=0, encoder_layers=12, encoder_layers_to_keep=None, encoder_learned_pos=True, encoder_normalize_before=False, end_learning_rate=0.0, eos=2, eval_bleu=False, eval_bleu_args=None, eval_bleu_detok='space', eval_bleu_detok_args=None, eval_bleu_print_samples=False, eval_bleu_remove_bpe=None, eval_tokenized_bleu=False, fast_stat_sync=False, find_unused_parameters=True, finetune_from_model=None, fix_batches_to_gpus=False, fixed_validation_seed=None, force_anneal=None, fp16=True, fp16_init_scale=128, fp16_no_flatten_grads=False, fp16_scale_tolerance=0.0, fp16_scale_window=None, gen_subset='test', ignore_prefix_size=0, keep_best_checkpoints=-1, keep_interval_updates=-1, keep_last_epochs=-1, label_smoothing=0.1, layernorm_embedding=True, left_pad_source='True', left_pad_target='False', load_alignments=False, local_rank=0, localsgd_frequency=3, log_format='simple', log_interval=100, lr=[3e-05], lr_scheduler='polynomial_decay', max_epoch=0, max_source_positions=1024, max_target_positions=1024, max_tokens=100, max_tokens_valid=100, max_update=0, maximize_best_checkpoint_metric=False, memory_efficient_bf16=False, memory_efficient_fp16=True, min_loss_scale=0.0001, min_lr=-1.0, model_parallel_size=1, no_cross_attention=False, no_epoch_checkpoints=False, no_last_checkpoints=False, no_progress_bar=False, no_save=False, no_save_optimizer_state=False, no_scale_embedding=True, no_seed_provided=False, no_token_positional_embeddings=False, nprocs_per_node=1, num_batch_buckets=0, num_shards=1, num_workers=1, optimizer='adam', optimizer_overrides='{}', pad=1, patience=-1, pipeline_balance=None, pipeline_checkpoint='never', pipeline_chunks=0, pipeline_decoder_balance=None, pipeline_decoder_devices=None, pipeline_devices=None, pipeline_encoder_balance=None, pipeline_encoder_devices=None, pipeline_model_parallel=False, pooler_activation_fn='tanh', pooler_dropout=0.0, power=1.0, profile=False, quant_noise_pq=0, quant_noise_pq_block_size=8, quant_noise_scalar=0, quantization_config_path=None, relu_dropout=0.0, report_accuracy=False, required_batch_size_multiple=1, required_seq_len_multiple=1, reset_dataloader=True, reset_lr_scheduler=False, reset_meters=True, reset_optimizer=True, restore_file='./bart.large/model.pt', save_dir='/cluster/scratch/jbernstorff/KaLM/', save_interval=1, save_interval_updates=0, scoring='bleu', seed=1, sentence_avg=False, shard_id=0, share_all_embeddings=True, share_decoder_input_output_embed=True, skip_invalid_size_inputs_valid_test=True, slowmo_algorithm='LocalSGD', slowmo_momentum=None, source_lang='source', stop_time_hours=0, target_lang='target', task='translation', tensorboard_logdir=None, threshold_loss_scale=None, tokenizer=None, total_num_update=200000, tpu=False, train_subset='train', truncate_source=True, unk=3, update_freq=[1], upsample_primary=1, use_bmuf=False, use_old_adam=False, user_dir=None, valid_subset='valid', validate_after_updates=0, validate_interval=1, validate_interval_updates=0, wandb_project=None, warmup_updates=500, weight_decay=0.01, zero_sharding='none'), 'scoring': {'_name': 'bleu', 'pad': 1, 'eos': 2, 'unk': 3}, 'bpe': None, 'tokenizer': None}
+2020-11-20 14:23:57 | INFO | fairseq.tasks.translation | [source] dictionary: 50264 types
+2020-11-20 14:23:57 | INFO | fairseq.tasks.translation | [target] dictionary: 50264 types
+2020-11-20 14:23:57 | INFO | fairseq.data.data_utils | loaded 2991 examples from: ./preprocess_taskC_data/subtaskC_data-bin/valid.source-target.source
+2020-11-20 14:23:57 | INFO | fairseq.data.data_utils | loaded 2991 examples from: ./preprocess_taskC_data/subtaskC_data-bin/valid.source-target.target
+2020-11-20 14:23:57 | INFO | fairseq.tasks.translation | ./preprocess_taskC_data/subtaskC_data-bin valid source-target 2991 examples
+2020-11-20 14:24:07 | INFO | fairseq_cli.train | BARTModel(
+  (encoder): TransformerEncoder(
+    (dropout_module): FairseqDropout()
+    (embed_tokens): Embedding(50264, 1024, padding_idx=1)
+    (embed_positions): LearnedPositionalEmbedding(1026, 1024, padding_idx=1)
+    (layernorm_embedding): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (6): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (7): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (8): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (9): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (10): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (11): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (dropout_module): FairseqDropout()
+        (activation_dropout_module): FairseqDropout()
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+  )
+  (decoder): TransformerDecoder(
+    (dropout_module): FairseqDropout()
+    (embed_tokens): Embedding(50264, 1024, padding_idx=1)
+    (embed_positions): LearnedPositionalEmbedding(1026, 1024, padding_idx=1)
+    (layernorm_embedding): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+    (layers): ModuleList(
+      (0): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (1): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (2): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (3): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (4): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (5): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (6): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (7): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (8): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (9): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (10): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+      (11): TransformerDecoderLayer(
+        (dropout_module): FairseqDropout()
+        (self_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (activation_dropout_module): FairseqDropout()
+        (self_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (encoder_attn): MultiheadAttention(
+          (dropout_module): FairseqDropout()
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (q_proj): Linear(in_features=1024, out_features=1024, bias=True)
+          (out_proj): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (encoder_attn_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+        (fc1): Linear(in_features=1024, out_features=4096, bias=True)
+        (fc2): Linear(in_features=4096, out_features=1024, bias=True)
+        (final_layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+      )
+    )
+    (output_projection): Linear(in_features=1024, out_features=50264, bias=False)
+  )
+  (classification_heads): ModuleDict()
+)
+2020-11-20 14:24:07 | INFO | fairseq_cli.train | task: TranslationTask
+2020-11-20 14:24:07 | INFO | fairseq_cli.train | model: BARTModel
+2020-11-20 14:24:07 | INFO | fairseq_cli.train | criterion: LabelSmoothedCrossEntropyCriterion)
+2020-11-20 14:24:07 | INFO | fairseq_cli.train | num. model params: 406290432 (num. trained: 406290432)
+2020-11-20 14:24:12 | INFO | fairseq.trainer | detected shared parameter: encoder.embed_tokens.weight <- decoder.embed_tokens.weight
+2020-11-20 14:24:12 | INFO | fairseq.trainer | detected shared parameter: encoder.embed_tokens.weight <- decoder.output_projection.weight
+2020-11-20 14:24:12 | INFO | fairseq.utils | ***********************CUDA enviroments for all 1 workers***********************
+2020-11-20 14:24:12 | INFO | fairseq.utils | rank   0: capabilities =  6.1  ; total memory = 7.929 GB ; name = GeForce GTX 1080                        
+2020-11-20 14:24:12 | INFO | fairseq.utils | ***********************CUDA enviroments for all 1 workers***********************
+2020-11-20 14:24:12 | INFO | fairseq_cli.train | training on 1 devices (GPUs/TPUs)
+2020-11-20 14:24:12 | INFO | fairseq_cli.train | max tokens per GPU = 100 and batch size per GPU = None
+2020-11-20 14:24:12 | INFO | fairseq.trainer | no existing checkpoint found ./bart.large/model.pt
+2020-11-20 14:24:12 | INFO | fairseq.trainer | loading train data for epoch 1
+2020-11-20 14:24:12 | INFO | fairseq.data.data_utils | loaded 45036 examples from: ./preprocess_taskC_data/subtaskC_data-bin/train.source-target.source
+2020-11-20 14:24:12 | INFO | fairseq.data.data_utils | loaded 45036 examples from: ./preprocess_taskC_data/subtaskC_data-bin/train.source-target.target
+2020-11-20 14:24:12 | INFO | fairseq.tasks.translation | ./preprocess_taskC_data/subtaskC_data-bin train source-target 45036 examples
+2020-11-20 14:24:12 | INFO | fairseq.trainer | NOTE: your device does NOT support faster training with --fp16, please switch to FP32 which is likely to be faster
+2020-11-20 14:24:12 | INFO | fairseq.trainer | begin training epoch 1
+2020-11-20 14:24:43 | INFO | train_inner | epoch 001:    100 / 5782 loss=14.948, nll_loss=14.838, ppl=29295.7, wps=282.3, ups=3.3, wpb=85.7, bsz=8.1, num_updates=100, lr=6e-06, gnorm=12.452, clip=100, loss_scale=128, train_wall=31, wall=31
+2020-11-20 14:25:13 | INFO | train_inner | epoch 001:    200 / 5782 loss=12.722, nll_loss=12.355, ppl=5237.07, wps=275.1, ups=3.33, wpb=82.6, bsz=7.8, num_updates=200, lr=1.2e-05, gnorm=7.122, clip=100, loss_scale=128, train_wall=30, wall=61
+2020-11-20 14:25:43 | INFO | train_inner | epoch 001:    300 / 5782 loss=11.492, nll_loss=10.957, ppl=1987.66, wps=276.7, ups=3.34, wpb=82.8, bsz=7.8, num_updates=300, lr=1.8e-05, gnorm=7.235, clip=100, loss_scale=128, train_wall=30, wall=91
+2020-11-20 14:26:13 | INFO | train_inner | epoch 001:    400 / 5782 loss=10.495, nll_loss=9.787, ppl=883.72, wps=278.9, ups=3.33, wpb=83.8, bsz=8, num_updates=400, lr=2.4e-05, gnorm=5.71, clip=100, loss_scale=128, train_wall=30, wall=121
+2020-11-20 14:26:43 | INFO | train_inner | epoch 001:    500 / 5782 loss=10.153, nll_loss=9.342, ppl=649.06, wps=273.5, ups=3.34, wpb=82, bsz=7.7, num_updates=500, lr=3e-05, gnorm=5.431, clip=100, loss_scale=128, train_wall=30, wall=151
+2020-11-20 14:27:13 | INFO | train_inner | epoch 001:    600 / 5782 loss=9.7, nll_loss=8.803, ppl=446.5, wps=274.1, ups=3.34, wpb=82, bsz=8.2, num_updates=600, lr=2.9985e-05, gnorm=5.221, clip=100, loss_scale=128, train_wall=30, wall=181
+2020-11-20 14:27:43 | INFO | train_inner | epoch 001:    700 / 5782 loss=9.615, nll_loss=8.695, ppl=414.31, wps=278.3, ups=3.34, wpb=83.4, bsz=7.8, num_updates=700, lr=2.99699e-05, gnorm=5.042, clip=100, loss_scale=128, train_wall=30, wall=211
+2020-11-20 14:28:14 | INFO | train_inner | epoch 001:    800 / 5782 loss=9.588, nll_loss=8.66, ppl=404.44, wps=265.3, ups=3.27, wpb=81.1, bsz=7.6, num_updates=800, lr=2.99549e-05, gnorm=5.178, clip=100, loss_scale=128, train_wall=30, wall=242
+2020-11-20 14:28:44 | INFO | train_inner | epoch 001:    900 / 5782 loss=9.34, nll_loss=8.376, ppl=332.17, wps=272.1, ups=3.34, wpb=81.5, bsz=7.6, num_updates=900, lr=2.99398e-05, gnorm=5.065, clip=100, loss_scale=128, train_wall=30, wall=272
+2020-11-20 14:29:14 | INFO | train_inner | epoch 001:   1000 / 5782 loss=9.358, nll_loss=8.396, ppl=336.79, wps=277.4, ups=3.33, wpb=83.2, bsz=7.5, num_updates=1000, lr=2.99248e-05, gnorm=4.97, clip=100, loss_scale=128, train_wall=30, wall=302
+2020-11-20 14:29:44 | INFO | train_inner | epoch 001:   1100 / 5782 loss=9.161, nll_loss=8.175, ppl=289.04, wps=279.3, ups=3.33, wpb=83.8, bsz=8, num_updates=1100, lr=2.99098e-05, gnorm=4.925, clip=100, loss_scale=128, train_wall=30, wall=331
+2020-11-20 14:30:14 | INFO | train_inner | epoch 001:   1200 / 5782 loss=9.096, nll_loss=8.101, ppl=274.57, wps=275, ups=3.34, wpb=82.3, bsz=7.7, num_updates=1200, lr=2.98947e-05, gnorm=4.96, clip=100, loss_scale=128, train_wall=30, wall=361
+2020-11-20 14:30:44 | INFO | train_inner | epoch 001:   1300 / 5782 loss=9.091, nll_loss=8.09, ppl=272.52, wps=287.2, ups=3.31, wpb=86.8, bsz=7.7, num_updates=1300, lr=2.98797e-05, gnorm=4.713, clip=100, loss_scale=128, train_wall=30, wall=392
+2020-11-20 14:31:14 | INFO | train_inner | epoch 001:   1400 / 5782 loss=8.919, nll_loss=7.897, ppl=238.38, wps=271.2, ups=3.33, wpb=81.3, bsz=7.7, num_updates=1400, lr=2.98647e-05, gnorm=5.079, clip=100, loss_scale=128, train_wall=30, wall=422
+2020-11-20 14:31:44 | INFO | train_inner | epoch 001:   1500 / 5782 loss=9.036, nll_loss=8.032, ppl=261.68, wps=269, ups=3.34, wpb=80.7, bsz=7.9, num_updates=1500, lr=2.98496e-05, gnorm=5.256, clip=100, loss_scale=128, train_wall=30, wall=452
+2020-11-20 14:32:14 | INFO | train_inner | epoch 001:   1600 / 5782 loss=8.826, nll_loss=7.795, ppl=222.03, wps=270.3, ups=3.33, wpb=81.1, bsz=7.8, num_updates=1600, lr=2.98346e-05, gnorm=5.017, clip=100, loss_scale=128, train_wall=30, wall=482
+2020-11-20 14:32:44 | INFO | train_inner | epoch 001:   1700 / 5782 loss=8.751, nll_loss=7.705, ppl=208.69, wps=272.8, ups=3.34, wpb=81.8, bsz=7.6, num_updates=1700, lr=2.98195e-05, gnorm=4.933, clip=100, loss_scale=128, train_wall=30, wall=512
+2020-11-20 14:33:14 | INFO | train_inner | epoch 001:   1800 / 5782 loss=8.741, nll_loss=7.692, ppl=206.79, wps=281.8, ups=3.33, wpb=84.7, bsz=7.6, num_updates=1800, lr=2.98045e-05, gnorm=4.932, clip=100, loss_scale=128, train_wall=30, wall=542
+2020-11-20 14:33:44 | INFO | train_inner | epoch 001:   1900 / 5782 loss=8.639, nll_loss=7.579, ppl=191.17, wps=286.5, ups=3.33, wpb=85.9, bsz=7.7, num_updates=1900, lr=2.97895e-05, gnorm=4.735, clip=100, loss_scale=128, train_wall=30, wall=572
+2020-11-20 14:34:14 | INFO | train_inner | epoch 001:   2000 / 5782 loss=8.702, nll_loss=7.647, ppl=200.5, wps=277.5, ups=3.34, wpb=83.1, bsz=7.6, num_updates=2000, lr=2.97744e-05, gnorm=4.872, clip=100, loss_scale=128, train_wall=30, wall=602
+2020-11-20 14:34:44 | INFO | train_inner | epoch 001:   2100 / 5782 loss=8.661, nll_loss=7.608, ppl=195.07, wps=273.6, ups=3.34, wpb=82, bsz=7.7, num_updates=2100, lr=2.97594e-05, gnorm=4.872, clip=100, loss_scale=128, train_wall=30, wall=632
+2020-11-20 14:35:14 | INFO | train_inner | epoch 001:   2200 / 5782 loss=8.686, nll_loss=7.63, ppl=198.06, wps=279.9, ups=3.34, wpb=83.9, bsz=7.9, num_updates=2200, lr=2.97444e-05, gnorm=4.919, clip=100, loss_scale=128, train_wall=30, wall=662
+2020-11-20 14:35:44 | INFO | train_inner | epoch 001:   2300 / 5782 loss=8.498, nll_loss=7.421, ppl=171.39, wps=285.3, ups=3.34, wpb=85.5, bsz=8.3, num_updates=2300, lr=2.97293e-05, gnorm=4.732, clip=100, loss_scale=128, train_wall=30, wall=692
+2020-11-20 14:36:14 | INFO | train_inner | epoch 001:   2400 / 5782 loss=8.427, nll_loss=7.34, ppl=162.06, wps=278.7, ups=3.34, wpb=83.5, bsz=7.8, num_updates=2400, lr=2.97143e-05, gnorm=4.778, clip=100, loss_scale=128, train_wall=30, wall=722
+2020-11-20 14:36:44 | INFO | train_inner | epoch 001:   2500 / 5782 loss=8.505, nll_loss=7.426, ppl=171.91, wps=284.2, ups=3.33, wpb=85.3, bsz=8, num_updates=2500, lr=2.96992e-05, gnorm=4.936, clip=100, loss_scale=128, train_wall=30, wall=752
+2020-11-20 14:37:14 | INFO | train_inner | epoch 001:   2600 / 5782 loss=8.573, nll_loss=7.504, ppl=181.47, wps=273.1, ups=3.33, wpb=82.1, bsz=7.8, num_updates=2600, lr=2.96842e-05, gnorm=4.969, clip=100, loss_scale=128, train_wall=30, wall=782
+2020-11-20 14:37:44 | INFO | train_inner | epoch 001:   2700 / 5782 loss=8.454, nll_loss=7.365, ppl=164.81, wps=277.4, ups=3.32, wpb=83.5, bsz=8.1, num_updates=2700, lr=2.96692e-05, gnorm=5, clip=100, loss_scale=128, train_wall=30, wall=812
+2020-11-20 14:38:14 | INFO | train_inner | epoch 001:   2800 / 5782 loss=8.545, nll_loss=7.473, ppl=177.66, wps=276.2, ups=3.33, wpb=83, bsz=7.8, num_updates=2800, lr=2.96541e-05, gnorm=4.984, clip=100, loss_scale=128, train_wall=30, wall=842
+2020-11-20 14:38:44 | INFO | train_inner | epoch 001:   2900 / 5782 loss=8.589, nll_loss=7.524, ppl=184.11, wps=275.7, ups=3.33, wpb=82.9, bsz=7.4, num_updates=2900, lr=2.96391e-05, gnorm=4.8, clip=100, loss_scale=128, train_wall=30, wall=872
+2020-11-20 14:39:14 | INFO | train_inner | epoch 001:   3000 / 5782 loss=8.34, nll_loss=7.235, ppl=150.65, wps=270.4, ups=3.32, wpb=81.4, bsz=7.8, num_updates=3000, lr=2.96241e-05, gnorm=4.92, clip=100, loss_scale=128, train_wall=30, wall=902
+2020-11-20 14:39:44 | INFO | train_inner | epoch 001:   3100 / 5782 loss=8.358, nll_loss=7.255, ppl=152.79, wps=283.3, ups=3.33, wpb=85.1, bsz=7.9, num_updates=3100, lr=2.9609e-05, gnorm=4.852, clip=100, loss_scale=128, train_wall=30, wall=932
+2020-11-20 14:40:14 | INFO | train_inner | epoch 001:   3200 / 5782 loss=8.319, nll_loss=7.212, ppl=148.21, wps=278, ups=3.32, wpb=83.6, bsz=7.6, num_updates=3200, lr=2.9594e-05, gnorm=4.955, clip=100, loss_scale=128, train_wall=30, wall=962
+2020-11-20 14:40:45 | INFO | train_inner | epoch 001:   3300 / 5782 loss=8.327, nll_loss=7.221, ppl=149.23, wps=277.1, ups=3.28, wpb=84.4, bsz=7.9, num_updates=3300, lr=2.95789e-05, gnorm=4.881, clip=100, loss_scale=128, train_wall=30, wall=992
+2020-11-20 14:41:15 | INFO | train_inner | epoch 001:   3400 / 5782 loss=8.437, nll_loss=7.344, ppl=162.42, wps=279.4, ups=3.31, wpb=84.3, bsz=7.5, num_updates=3400, lr=2.95639e-05, gnorm=4.94, clip=100, loss_scale=128, train_wall=30, wall=1023
+2020-11-20 14:41:45 | INFO | train_inner | epoch 001:   3500 / 5782 loss=8.331, nll_loss=7.225, ppl=149.61, wps=276.5, ups=3.31, wpb=83.6, bsz=7.5, num_updates=3500, lr=2.95489e-05, gnorm=4.916, clip=100, loss_scale=128, train_wall=30, wall=1053
+2020-11-20 14:42:15 | INFO | train_inner | epoch 001:   3600 / 5782 loss=8.392, nll_loss=7.291, ppl=156.57, wps=276.2, ups=3.31, wpb=83.5, bsz=7.2, num_updates=3600, lr=2.95338e-05, gnorm=4.84, clip=100, loss_scale=128, train_wall=30, wall=1083
+2020-11-20 14:42:45 | INFO | train_inner | epoch 001:   3700 / 5782 loss=8.312, nll_loss=7.201, ppl=147.13, wps=282.3, ups=3.32, wpb=85.2, bsz=8, num_updates=3700, lr=2.95188e-05, gnorm=4.87, clip=100, loss_scale=128, train_wall=30, wall=1113
+2020-11-20 14:43:16 | INFO | train_inner | epoch 001:   3800 / 5782 loss=8.278, nll_loss=7.164, ppl=143.39, wps=279.4, ups=3.31, wpb=84.4, bsz=7.9, num_updates=3800, lr=2.95038e-05, gnorm=4.934, clip=100, loss_scale=128, train_wall=30, wall=1143
+2020-11-20 14:43:46 | INFO | train_inner | epoch 001:   3900 / 5782 loss=8.281, nll_loss=7.167, ppl=143.71, wps=278.8, ups=3.31, wpb=84.2, bsz=7.6, num_updates=3900, lr=2.94887e-05, gnorm=4.793, clip=100, loss_scale=128, train_wall=30, wall=1174
+2020-11-20 14:44:16 | INFO | train_inner | epoch 001:   4000 / 5782 loss=8.209, nll_loss=7.084, ppl=135.71, wps=279.7, ups=3.31, wpb=84.4, bsz=8.2, num_updates=4000, lr=2.94737e-05, gnorm=4.867, clip=100, loss_scale=128, train_wall=30, wall=1204
+2020-11-20 14:44:46 | INFO | train_inner | epoch 001:   4100 / 5782 loss=8.217, nll_loss=7.09, ppl=136.25, wps=282.5, ups=3.31, wpb=85.4, bsz=7.7, num_updates=4100, lr=2.94586e-05, gnorm=4.927, clip=100, loss_scale=128, train_wall=30, wall=1234
+2020-11-20 14:45:16 | INFO | train_inner | epoch 001:   4200 / 5782 loss=8.164, nll_loss=7.031, ppl=130.77, wps=276.2, ups=3.31, wpb=83.5, bsz=7.9, num_updates=4200, lr=2.94436e-05, gnorm=5.067, clip=100, loss_scale=128, train_wall=30, wall=1264
+2020-11-20 14:45:47 | INFO | train_inner | epoch 001:   4300 / 5782 loss=8.12, nll_loss=6.981, ppl=126.29, wps=278.3, ups=3.31, wpb=84.1, bsz=8, num_updates=4300, lr=2.94286e-05, gnorm=4.996, clip=100, loss_scale=128, train_wall=30, wall=1295
+2020-11-20 14:46:17 | INFO | train_inner | epoch 001:   4400 / 5782 loss=8.119, nll_loss=6.98, ppl=126.26, wps=269.1, ups=3.31, wpb=81.2, bsz=7.6, num_updates=4400, lr=2.94135e-05, gnorm=5.184, clip=100, loss_scale=128, train_wall=30, wall=1325
+2020-11-20 14:46:47 | INFO | train_inner | epoch 001:   4500 / 5782 loss=8.252, nll_loss=7.131, ppl=140.2, wps=268.7, ups=3.31, wpb=81.1, bsz=7.8, num_updates=4500, lr=2.93985e-05, gnorm=5.242, clip=100, loss_scale=128, train_wall=30, wall=1355
+2020-11-20 14:47:18 | INFO | train_inner | epoch 001:   4600 / 5782 loss=8.065, nll_loss=6.921, ppl=121.18, wps=269.4, ups=3.26, wpb=82.7, bsz=7.9, num_updates=4600, lr=2.93835e-05, gnorm=4.996, clip=100, loss_scale=128, train_wall=30, wall=1386
+2020-11-20 14:47:48 | INFO | train_inner | epoch 001:   4700 / 5782 loss=8.095, nll_loss=6.949, ppl=123.52, wps=274.7, ups=3.29, wpb=83.5, bsz=7.7, num_updates=4700, lr=2.93684e-05, gnorm=5.121, clip=100, loss_scale=128, train_wall=30, wall=1416
+2020-11-20 14:48:18 | INFO | train_inner | epoch 001:   4800 / 5782 loss=8.179, nll_loss=7.048, ppl=132.3, wps=254.4, ups=3.29, wpb=77.3, bsz=7.9, num_updates=4800, lr=2.93534e-05, gnorm=5.318, clip=100, loss_scale=128, train_wall=30, wall=1446
+2020-11-20 14:48:49 | INFO | train_inner | epoch 001:   4900 / 5782 loss=8.088, nll_loss=6.944, ppl=123.15, wps=272.3, ups=3.29, wpb=82.8, bsz=7.7, num_updates=4900, lr=2.93383e-05, gnorm=4.997, clip=100, loss_scale=128, train_wall=30, wall=1477
+2020-11-20 14:49:19 | INFO | train_inner | epoch 001:   5000 / 5782 loss=8.008, nll_loss=6.85, ppl=115.37, wps=266.9, ups=3.29, wpb=81.1, bsz=8, num_updates=5000, lr=2.93233e-05, gnorm=5.099, clip=100, loss_scale=128, train_wall=30, wall=1507
+2020-11-20 14:49:50 | INFO | train_inner | epoch 001:   5100 / 5782 loss=8.023, nll_loss=6.871, ppl=117.09, wps=263.4, ups=3.23, wpb=81.5, bsz=8, num_updates=5100, lr=2.93083e-05, gnorm=5.015, clip=100, loss_scale=128, train_wall=31, wall=1538
+2020-11-20 14:50:21 | INFO | train_inner | epoch 001:   5200 / 5782 loss=7.932, nll_loss=6.766, ppl=108.81, wps=269.7, ups=3.25, wpb=82.9, bsz=8.1, num_updates=5200, lr=2.92932e-05, gnorm=4.976, clip=100, loss_scale=128, train_wall=30, wall=1569
+2020-11-20 14:50:52 | INFO | train_inner | epoch 001:   5300 / 5782 loss=8.036, nll_loss=6.883, ppl=118.01, wps=270.5, ups=3.27, wpb=82.8, bsz=7.6, num_updates=5300, lr=2.92782e-05, gnorm=5.034, clip=100, loss_scale=128, train_wall=30, wall=1599
+2020-11-20 14:51:22 | INFO | train_inner | epoch 001:   5400 / 5782 loss=7.963, nll_loss=6.802, ppl=111.58, wps=273.9, ups=3.27, wpb=83.8, bsz=7.7, num_updates=5400, lr=2.92632e-05, gnorm=5.038, clip=100, loss_scale=128, train_wall=30, wall=1630
+2020-11-20 14:51:53 | INFO | train_inner | epoch 001:   5500 / 5782 loss=8.019, nll_loss=6.867, ppl=116.76, wps=277.5, ups=3.26, wpb=85.1, bsz=7.8, num_updates=5500, lr=2.92481e-05, gnorm=4.959, clip=100, loss_scale=128, train_wall=30, wall=1661
+2020-11-20 14:52:23 | INFO | train_inner | epoch 001:   5600 / 5782 loss=7.942, nll_loss=6.779, ppl=109.84, wps=273.6, ups=3.26, wpb=83.8, bsz=7.8, num_updates=5600, lr=2.92331e-05, gnorm=5.088, clip=100, loss_scale=128, train_wall=30, wall=1691
+2020-11-20 14:52:54 | INFO | train_inner | epoch 001:   5700 / 5782 loss=7.942, nll_loss=6.78, ppl=109.92, wps=274.9, ups=3.26, wpb=84.3, bsz=7.9, num_updates=5700, lr=2.9218e-05, gnorm=5.151, clip=100, loss_scale=128, train_wall=30, wall=1722
+2020-11-20 14:53:19 | INFO | fairseq_cli.train | begin save checkpoint
