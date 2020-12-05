@@ -1,0 +1,301 @@
+Input.sample_id,Input.false_sent,Input.Reason1,Answer.reason1
+394,the stove helps to cool down the house,the stove is used to heat up the house,3
+394,the stove helps to cool down the house,the stove is used to heat up the house,2
+394,the stove helps to cool down the house,the stove is used to heat up the house,1
+1837,he put all three of his legs into the trousers,a pair of trousers only have two legs on them,3
+1837,he put all three of his legs into the trousers,a pair of trousers only have two legs on them,3
+1837,he put all three of his legs into the trousers,a pair of trousers only have two legs on them,2
+334,Horse uses its trunk to drink water,Horses do not have trunks.,3
+334,Horse uses its trunk to drink water,Horses do not have trunks.,1
+334,Horse uses its trunk to drink water,Horses do not have trunks.,3
+892,he went for a walk in the woods and was bitten by a shark,sharks do not live in the water,2
+892,he went for a walk in the woods and was bitten by a shark,sharks do not live in the water,2
+892,he went for a walk in the woods and was bitten by a shark,sharks do not live in the water,0
+1344,Drinking beers makes the girl become an alien,Aliens are not real.,2
+1344,Drinking beers makes the girl become an alien,Aliens are not real.,3
+1344,Drinking beers makes the girl become an alien,Aliens are not real.,2
+83,Salsa is for hair,Salsa is not for hair.,3
+83,Salsa is for hair,Salsa is not for hair.,2
+83,Salsa is for hair,Salsa is not for hair.,3
+1123,My friend runs for 2 inches every day.,Inches are too small to run for.,3
+1123,My friend runs for 2 inches every day.,Inches are too small to run for.,1
+1123,My friend runs for 2 inches every day.,Inches are too small to run for.,3
+73,He opened the bottle to read it,Bottles do not have words on them.,3
+73,He opened the bottle to read it,Bottles do not have words on them.,3
+73,He opened the bottle to read it,Bottles do not have words on them.,2
+1852,He put a pony in the lock.,A pony is too big to fit in a lock,3
+1852,He put a pony in the lock.,A pony is too big to fit in a lock,3
+1852,He put a pony in the lock.,A pony is too big to fit in a lock,2
+904,fire can burn without oxygen,Fire needs oxygen to burn.,2
+904,fire can burn without oxygen,Fire needs oxygen to burn.,3
+904,fire can burn without oxygen,Fire needs oxygen to burn.,3
+1996,today my hand is very clear to see the world,hands can't see the world by themselves,3
+1996,today my hand is very clear to see the world,hands can't see the world by themselves,2
+1996,today my hand is very clear to see the world,hands can't see the world by themselves,2
+1111,Sleeping with makeup on nourishes your skin and makes it healthier.,Sleeping with makeup on nourishes your skin and makes it healthier,1
+1111,Sleeping with makeup on nourishes your skin and makes it healthier.,Sleeping with makeup on nourishes your skin and makes it healthier,0
+1111,Sleeping with makeup on nourishes your skin and makes it healthier.,Sleeping with makeup on nourishes your skin and makes it healthier,0
+877,standing up for long hours is relaxing,Standing up for long hours will make you tired.,2
+877,standing up for long hours is relaxing,Standing up for long hours will make you tired.,3
+877,standing up for long hours is relaxing,Standing up for long hours will make you tired.,5
+600,Chronic pain is usually caused by a person's mood.,Chronic pain is usually caused by a person's mood.,0
+600,Chronic pain is usually caused by a person's mood.,Chronic pain is usually caused by a person's mood.,2
+600,Chronic pain is usually caused by a person's mood.,Chronic pain is usually caused by a person's mood.,0
+1736,A cat eats a building,A building is too big for a cat to eat.,3
+1736,A cat eats a building,A building is too big for a cat to eat.,2
+1736,A cat eats a building,A building is too big for a cat to eat.,3
+1798,Sally taught her students burglary,Burglars are not taught by teachers.,2
+1798,Sally taught her students burglary,Burglars are not taught by teachers.,2
+1798,Sally taught her students burglary,Burglars are not taught by teachers.,3
+294,The man slipped on the gentle breeze,A breeze is soft and cannot cause a man to slip.,3
+294,The man slipped on the gentle breeze,A breeze is soft and cannot cause a man to slip.,3
+294,The man slipped on the gentle breeze,A breeze is soft and cannot cause a man to slip.,2
+811,he purchased lime and cement to prepare sandwiches for dinner,Lime and cement cannot be used to make sandwiches.,0
+811,he purchased lime and cement to prepare sandwiches for dinner,Lime and cement cannot be used to make sandwiches.,2
+811,he purchased lime and cement to prepare sandwiches for dinner,Lime and cement cannot be used to make sandwiches.,2
+1139,Something you find at a hotel is n cow shelter,Something you find at a hotel is n cow shelter,2
+1139,Something you find at a hotel is n cow shelter,Something you find at a hotel is n cow shelter,0
+1139,Something you find at a hotel is n cow shelter,Something you find at a hotel is n cow shelter,0
+93,Water tastes like orange juice,Water does not taste like orange juice because orange juice is made from oranges.,1
+93,Water tastes like orange juice,Water does not taste like orange juice because orange juice is made from oranges.,3
+93,Water tastes like orange juice,Water does not taste like orange juice because orange juice is made from oranges.,2
+799,the man took his door to the dry cleaner,Doors do not go to dry cleaner's for dry cleaning.,1
+799,the man took his door to the dry cleaner,Doors do not go to dry cleaner's for dry cleaning.,3
+799,the man took his door to the dry cleaner,Doors do not go to dry cleaner's for dry cleaning.,2
+67,The fire will cool you if you touch it.,The fire will burn you if you touch it,2
+67,The fire will cool you if you touch it.,The fire will burn you if you touch it,2
+67,The fire will cool you if you touch it.,The fire will burn you if you touch it,3
+1830,You are unlikely to ever find a book in the library.,You are likely to find a book in a library.,1
+1830,You are unlikely to ever find a book in the library.,You are likely to find a book in a library.,1
+1830,You are unlikely to ever find a book in the library.,You are likely to find a book in a library.,4
+932,my brother always play football in a swimming tank,A swimming tank is too small to play football.,3
+932,my brother always play football in a swimming tank,A swimming tank is too small to play football.,0
+932,my brother always play football in a swimming tank,A swimming tank is too small to play football.,2
+306,Orange juice is green.,Orange juice is made from oranges.,0
+306,Orange juice is green.,Orange juice is made from oranges.,2
+306,Orange juice is green.,Orange juice is made from oranges.,2
+141,Dogs require aluminum to survive.,Aluminum is not necessary for dogs to survive.,2
+141,Dogs require aluminum to survive.,Aluminum is not necessary for dogs to survive.,3
+141,Dogs require aluminum to survive.,Aluminum is not necessary for dogs to survive.,3
+264,If you want to go for a jog then you should start singing,Singing does not help you go for a jog,2
+264,If you want to go for a jog then you should start singing,Singing does not help you go for a jog,3
+264,If you want to go for a jog then you should start singing,Singing does not help you go for a jog,3
+999,It is easy to find seashells in the forest,There are no seashells in the forest.,2
+999,It is easy to find seashells in the forest,There are no seashells in the forest.,2
+999,It is easy to find seashells in the forest,There are no seashells in the forest.,3
+1914,Girls are taller than boys on average,Boys are taller than girls on average.,2
+1914,Girls are taller than boys on average,Boys are taller than girls on average.,3
+1914,Girls are taller than boys on average,Boys are taller than girls on average.,3
+372,He pet his pterodactyl gently,Pterodactyls are too large to pet.,0
+372,He pet his pterodactyl gently,Pterodactyls are too large to pet.,1
+372,He pet his pterodactyl gently,Pterodactyls are too large to pet.,3
+1664,boys wear bra to provide support to their breasts,Boys do not have breasts.,2
+1664,boys wear bra to provide support to their breasts,Boys do not have breasts.,3
+1664,boys wear bra to provide support to their breasts,Boys do not have breasts.,2
+1093,I took home the gold during class.,Gold is not something that can be taken home.,1
+1093,I took home the gold during class.,Gold is not something that can be taken home.,1
+1093,I took home the gold during class.,Gold is not something that can be taken home.,1
+1822,Water drinks people,Water does not drink people.,0
+1822,Water drinks people,Water does not drink people.,3
+1822,Water drinks people,Water does not drink people.,1
+174,Toads are not made of wood,Toads are not made of wood.,1
+174,Toads are not made of wood,Toads are not made of wood.,0
+174,Toads are not made of wood,Toads are not made of wood.,3
+527,An electrician generates electricity.,Electricians work with electricity to make it work.,3
+527,An electrician generates electricity.,Electricians work with electricity to make it work.,2
+527,An electrician generates electricity.,Electricians work with electricity to make it work.,2
+32,The farm went to the farm,A farm is not alive and cannot move.,3
+32,The farm went to the farm,A farm is not alive and cannot move.,3
+32,The farm went to the farm,A farm is not alive and cannot move.,2
+25,Some chocolate bars are molded metal.,Molded metal is not used to make chocolate.,3
+25,Some chocolate bars are molded metal.,Molded metal is not used to make chocolate.,3
+25,Some chocolate bars are molded metal.,Molded metal is not used to make chocolate.,2
+48,A cat dropped from a plane wearing a parachute will land on the tip of its' tail.,A cat dropped from a plane wearing a parachute will land on its' feet.,2
+48,A cat dropped from a plane wearing a parachute will land on the tip of its' tail.,A cat dropped from a plane wearing a parachute will land on its' feet.,2
+48,A cat dropped from a plane wearing a parachute will land on the tip of its' tail.,A cat dropped from a plane wearing a parachute will land on its' feet.,3
+641,he bought the bike from the bookstore,Bikes are not sold in bookstores.,2
+641,he bought the bike from the bookstore,Bikes are not sold in bookstores.,3
+641,he bought the bike from the bookstore,Bikes are not sold in bookstores.,2
+614,He opened a can opener with a can opener.,A can opener cannot be opened with a can opener,1
+614,He opened a can opener with a can opener.,A can opener cannot be opened with a can opener,3
+614,He opened a can opener with a can opener.,A can opener cannot be opened with a can opener,3
+266,He broke his leg and went to get a burger,burgers don't help a broken leg,2
+266,He broke his leg and went to get a burger,burgers don't help a broken leg,2
+266,He broke his leg and went to get a burger,burgers don't help a broken leg,2
+1791,An apple took a bite out of him.,An apple is an inanimate object and cannot take a bite out of a person.,3
+1791,An apple took a bite out of him.,An apple is an inanimate object and cannot take a bite out of a person.,3
+1791,An apple took a bite out of him.,An apple is an inanimate object and cannot take a bite out of a person.,2
+979,he installed the carpet on the lake,Carpet cannot be installed on the lake.,2
+979,he installed the carpet on the lake,Carpet cannot be installed on the lake.,2
+979,he installed the carpet on the lake,Carpet cannot be installed on the lake.,1
+1775,Amazon has gone bankrupt,Amazon is one of the biggest companies in the world.,3
+1775,Amazon has gone bankrupt,Amazon is one of the biggest companies in the world.,3
+1775,Amazon has gone bankrupt,Amazon is one of the biggest companies in the world.,3
+903,the bird spilled milk on the floor,"Birds do not spill milk, humans do.",2
+903,the bird spilled milk on the floor,"Birds do not spill milk, humans do.",3
+903,the bird spilled milk on the floor,"Birds do not spill milk, humans do.",3
+1283,There is a car engine on an airplane,Airplanes do not have car engines.,2
+1283,There is a car engine on an airplane,Airplanes do not have car engines.,1
+1283,There is a car engine on an airplane,Airplanes do not have car engines.,2
+1075,The dog was clean after playing in the mud.,Playing in the mud can make a dog dirty.,2
+1075,The dog was clean after playing in the mud.,Playing in the mud can make a dog dirty.,3
+1075,The dog was clean after playing in the mud.,Playing in the mud can make a dog dirty.,2
+10,My sister visited art museum with her zebra,A zebra does not belong in a museum.,1
+10,My sister visited art museum with her zebra,A zebra does not belong in a museum.,2
+10,My sister visited art museum with her zebra,A zebra does not belong in a museum.,2
+107,The watermelon ate the kids,A watermelon is an inanimate object,3
+107,The watermelon ate the kids,A watermelon is an inanimate object,3
+107,The watermelon ate the kids,A watermelon is an inanimate object,0
+317,I use grass to cut my lawnmower.,Grass is not sharp enough to cut a lawnmower.,0
+317,I use grass to cut my lawnmower.,Grass is not sharp enough to cut a lawnmower.,0
+317,I use grass to cut my lawnmower.,Grass is not sharp enough to cut a lawnmower.,2
+1018,you can go swimming and fishing at a zoo,Zoo is not a place to go swimming and fishing.,2
+1018,you can go swimming and fishing at a zoo,Zoo is not a place to go swimming and fishing.,2
+1018,you can go swimming and fishing at a zoo,Zoo is not a place to go swimming and fishing.,0
+288,The sky is orange,Orange is not the color of the sky,2
+288,The sky is orange,Orange is not the color of the sky,2
+288,The sky is orange,Orange is not the color of the sky,3
+491,To be a doctor you must only obtain the faith and trust of your patients.,To be a doctor you must go to school for several years and earn a doctorate.,3
+491,To be a doctor you must only obtain the faith and trust of your patients.,To be a doctor you must go to school for several years and earn a doctorate.,3
+491,To be a doctor you must only obtain the faith and trust of your patients.,To be a doctor you must go to school for several years and earn a doctorate.,2
+1625,You can use your eyes to eat,"Eyes are for seeing, not eating.",3
+1625,You can use your eyes to eat,"Eyes are for seeing, not eating.",3
+1625,You can use your eyes to eat,"Eyes are for seeing, not eating.",3
+92,A group of people seated at bed for a meal,A bed is too small for a meal to be served.,3
+92,A group of people seated at bed for a meal,A bed is too small for a meal to be served.,2
+92,A group of people seated at bed for a meal,A bed is too small for a meal to be served.,2
+1239,Due to global warming the temperature becomes lower,"Global warming causes the temperature to rise, not lower",3
+1239,Due to global warming the temperature becomes lower,"Global warming causes the temperature to rise, not lower",3
+1239,Due to global warming the temperature becomes lower,"Global warming causes the temperature to rise, not lower",3
+363,My knee was scrapped and I put dirt on it.,Dirt would make the wound worse.,3
+363,My knee was scrapped and I put dirt on it.,Dirt would make the wound worse.,3
+363,My knee was scrapped and I put dirt on it.,Dirt would make the wound worse.,3
+1991,He ate an entire zebra for lunch.,An entire zebra is too large for a person to eat.,3
+1991,He ate an entire zebra for lunch.,An entire zebra is too large for a person to eat.,3
+1991,He ate an entire zebra for lunch.,An entire zebra is too large for a person to eat.,2
+588,School is where animals go to dance,Animals do not go to school to dance,3
+588,School is where animals go to dance,Animals do not go to school to dance,2
+588,School is where animals go to dance,Animals do not go to school to dance,1
+737,She purchased four supermarket tickets.,A supermarket is not a place to purchase tickets.,2
+737,She purchased four supermarket tickets.,A supermarket is not a place to purchase tickets.,0
+737,She purchased four supermarket tickets.,A supermarket is not a place to purchase tickets.,1
+1019,he put a chair in the basket,A chair is too large to fit in a basket,3
+1019,he put a chair in the basket,A chair is too large to fit in a basket,3
+1019,he put a chair in the basket,A chair is too large to fit in a basket,2
+1390,Zookeeper is working at the hospital,"Zookeepers work at a zoo, not a hospital",3
+1390,Zookeeper is working at the hospital,"Zookeepers work at a zoo, not a hospital",3
+1390,Zookeeper is working at the hospital,"Zookeepers work at a zoo, not a hospital",3
+1514,Asia is part of Dubai,Asia is a continent while Dubai is a city,3
+1514,Asia is part of Dubai,Asia is a continent while Dubai is a city,3
+1514,Asia is part of Dubai,Asia is a continent while Dubai is a city,1
+1222,You do not need eyes to read a book.,You must have eyes to read a book,2
+1222,You do not need eyes to read a book.,You must have eyes to read a book,3
+1222,You do not need eyes to read a book.,You must have eyes to read a book,1
+178,John plays football in outer space.,There are no football fields in outer space.,2
+178,John plays football in outer space.,There are no football fields in outer space.,3
+178,John plays football in outer space.,There are no football fields in outer space.,2
+50,There are beautiful planes here and there in the garden,Planes are not found in the garden.,0
+50,There are beautiful planes here and there in the garden,Planes are not found in the garden.,3
+50,There are beautiful planes here and there in the garden,Planes are not found in the garden.,2
+1770,There is peace during war,There is no peace during a war.,3
+1770,There is peace during war,There is no peace during a war.,1
+1770,There is peace during war,There is no peace during a war.,2
+1204,My car is going to the church service,Cars are not able to go to church services.,1
+1204,My car is going to the church service,Cars are not able to go to church services.,2
+1204,My car is going to the church service,Cars are not able to go to church services.,2
+347,I wore a notebook to work.,A notebook is not a piece of clothing,2
+347,I wore a notebook to work.,A notebook is not a piece of clothing,1
+347,I wore a notebook to work.,A notebook is not a piece of clothing,3
+1326,one hundred people enter in the car,One hundred people can't fit in a car.,3
+1326,one hundred people enter in the car,One hundred people can't fit in a car.,3
+1326,one hundred people enter in the car,One hundred people can't fit in a car.,1
+1878,Children do not like playtime,Children love to play with their friends.,3
+1878,Children do not like playtime,Children love to play with their friends.,2
+1878,Children do not like playtime,Children love to play with their friends.,2
+1482,Heating food makes the food balance better on a fork.,A fork does not have a heat source.,2
+1482,Heating food makes the food balance better on a fork.,A fork does not have a heat source.,1
+1482,Heating food makes the food balance better on a fork.,A fork does not have a heat source.,2
+1339,She went for a run on the Sun.,The Sun is too hot to run on.,3
+1339,She went for a run on the Sun.,The Sun is too hot to run on.,3
+1339,She went for a run on the Sun.,The Sun is too hot to run on.,2
+883,all films are real life,Not all films are fictional.,2
+883,all films are real life,Not all films are fictional.,3
+883,all films are real life,Not all films are fictional.,1
+1656,I STOLE A BLUE CORVETTE,A corvette cannot be blue.,3
+1656,I STOLE A BLUE CORVETTE,A corvette cannot be blue.,1
+1656,I STOLE A BLUE CORVETTE,A corvette cannot be blue.,1
+1301,He put a motorcycle in his wallet,A motorcycle is too large to fit in a wallet.,2
+1301,He put a motorcycle in his wallet,A motorcycle is too large to fit in a wallet.,3
+1301,He put a motorcycle in his wallet,A motorcycle is too large to fit in a wallet.,2
+1839,I hide successfully behind a book,A book is too hard to hide behind.,2
+1839,I hide successfully behind a book,A book is too hard to hide behind.,2
+1839,I hide successfully behind a book,A book is too hard to hide behind.,0
+35,Pigs lay eggs,Pigs are mammals and do not lay eggs,3
+35,Pigs lay eggs,Pigs are mammals and do not lay eggs,3
+35,Pigs lay eggs,Pigs are mammals and do not lay eggs,3
+1933,He put a shark into the fridge.,A shark is too large to fit in a fridge,3
+1933,He put a shark into the fridge.,A shark is too large to fit in a fridge,3
+1933,He put a shark into the fridge.,A shark is too large to fit in a fridge,2
+922,ham is made from a cat,Ham is not made from a cat.,1
+922,ham is made from a cat,Ham is not made from a cat.,0
+922,ham is made from a cat,Ham is not made from a cat.,1
+370,HE WAS GOING TO RESTAURANT AFTER ACCIDENT,Restaurants do not have doctors or medical equipment,3
+370,HE WAS GOING TO RESTAURANT AFTER ACCIDENT,Restaurants do not have doctors or medical equipment,2
+370,HE WAS GOING TO RESTAURANT AFTER ACCIDENT,Restaurants do not have doctors or medical equipment,3
+969,plants convert sugar to a light,Sugar does not convert to light.,1
+969,plants convert sugar to a light,Sugar does not convert to light.,2
+969,plants convert sugar to a light,Sugar does not convert to light.,0
+256,London goes in this bus.,London is too big to fit in a bus,3
+256,London goes in this bus.,London is too big to fit in a bus,3
+256,London goes in this bus.,London is too big to fit in a bus,2
+379,I like to drink coffee beans in the morning,coffee beans are not good for your health,1
+379,I like to drink coffee beans in the morning,coffee beans are not good for your health,0
+379,I like to drink coffee beans in the morning,coffee beans are not good for your health,1
+1706,A dead man still has many senses,A dead man does not have any senses,1
+1706,A dead man still has many senses,A dead man does not have any senses,1
+1706,A dead man still has many senses,A dead man does not have any senses,3
+646,You can use a Hospital to sleep while away from home,Hospital is not a place to sleep while away from home.,2
+646,You can use a Hospital to sleep while away from home,Hospital is not a place to sleep while away from home.,3
+646,You can use a Hospital to sleep while away from home,Hospital is not a place to sleep while away from home.,1
+273,A rainbow can appear on the ground,"Rainbows appear in the sky, not on the ground",2
+273,A rainbow can appear on the ground,"Rainbows appear in the sky, not on the ground",3
+273,A rainbow can appear on the ground,"Rainbows appear in the sky, not on the ground",3
+424,the man fed the mouse a snake,Snakes are too large for mice to eat,3
+424,the man fed the mouse a snake,Snakes are too large for mice to eat,0
+424,the man fed the mouse a snake,Snakes are too large for mice to eat,3
+210,I was doing my laundry at the library.,Libraries do not have the tools to do laundry.,1
+210,I was doing my laundry at the library.,Libraries do not have the tools to do laundry.,3
+210,I was doing my laundry at the library.,Libraries do not have the tools to do laundry.,2
+1781,She washed the car in the sink.,A car is too big to fit in a sink.,0
+1781,She washed the car in the sink.,A car is too big to fit in a sink.,3
+1781,She washed the car in the sink.,A car is too big to fit in a sink.,3
+1549,the mobile phone is one of the food,Mobile phone is not a food item,3
+1549,the mobile phone is one of the food,Mobile phone is not a food item,3
+1549,the mobile phone is one of the food,Mobile phone is not a food item,3
+447,Fruit needs people to live,Fruit does not need people to live,3
+447,Fruit needs people to live,Fruit does not need people to live,1
+447,Fruit needs people to live,Fruit does not need people to live,2
+1940,The blind girl saw the red car.,Blind people can't see.,3
+1940,The blind girl saw the red car.,Blind people can't see.,3
+1940,The blind girl saw the red car.,Blind people can't see.,3
+1417,A scholar is well-payed,A scholar does not get paid.,2
+1417,A scholar is well-payed,A scholar does not get paid.,1
+1417,A scholar is well-payed,A scholar does not get paid.,1
+40,Birds live in a house,Birds do not live in houses.,1
+40,Birds live in a house,Birds do not live in houses.,2
+40,Birds live in a house,Birds do not live in houses.,1
+124,There are lots of fish in the sky.,Fish can't fly.,3
+124,There are lots of fish in the sky.,Fish can't fly.,3
+124,There are lots of fish in the sky.,Fish can't fly.,3
+265,Everyone hates racists.,Racists are not everyone's enemies.,2
+265,Everyone hates racists.,Racists are not everyone's enemies.,0
+265,Everyone hates racists.,Racists are not everyone's enemies.,2
+872,smoking will cherish your health,Smoking is injurious to health,2
+872,smoking will cherish your health,Smoking is injurious to health,3
+872,smoking will cherish your health,Smoking is injurious to health,2
+1934,Doctors do not have to study too much,Doctors need to study a lot to become a doctor,3
+1934,Doctors do not have to study too much,Doctors need to study a lot to become a doctor,3
+1934,Doctors do not have to study too much,Doctors need to study a lot to become a doctor,2
+1966,he was television at his brother,A person cannot be a television and angry at the same time.,0
+1966,he was television at his brother,A person cannot be a television and angry at the same time.,2
+1966,he was television at his brother,A person cannot be a television and angry at the same time.,1
