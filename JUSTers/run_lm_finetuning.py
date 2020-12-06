@@ -39,6 +39,8 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler, SequentialSampl
 from torch.utils.data.distributed import DistributedSampler
 from tqdm.auto import tqdm, trange
 
+device = torch.device("cuda")
+
 from transformers import (
 	WEIGHTS_NAME,
 	AdamW,
@@ -125,7 +127,6 @@ class TextDataset(Dataset):
 
 class LineByLineTextDataset(Dataset):
 	def __init__(self, tokenizer: PreTrainedTokenizer, args, file_path: str, block_size=512):
-		assert os.path.isfile(file_path)
 		# Here, we do not cache the features, operating under the assumption
 		# that we will soon use fast multithreaded tokenizers from the
 		# `tokenizers` repo everywhere =)
@@ -725,7 +726,7 @@ def main():
 		torch.distributed.barrier()  # Barrier to make sure only the first process in distributed training download model & vocab
 
 	config_class, model_class, tokenizer_class = MODEL_CLASSES[args.model_type]
-
+	device = torch.device("cuda")
 	if args.config_name:
 		config = config_class.from_pretrained(args.config_name, cache_dir=args.cache_dir)
 	elif args.model_name_or_path:
