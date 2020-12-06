@@ -10,7 +10,7 @@ from rouge_score import rouge_scorer
 
 
 class Scorer:
-    def __init__(self, prediction_path, reference_path):
+    def __init__(self, prediction_path, reference_path, human_eval=False):
         self.prediction_path = prediction_path
         self.reference_path = reference_path
         self._references = []
@@ -18,17 +18,27 @@ class Scorer:
         self._scores = []
         self.predictions_df = pd.DataFrame()
         self.references_df = pd.DataFrame()
-        self.load_data(prediction_path, reference_path)
+        self.load_data(prediction_path, reference_path, human_eval=human_eval)
 
 
-    def load_data(self, prediction_path, reference_path):
+    def load_data(self, prediction_path, reference_path, human_eval = False):
         if  not os.path.isfile(prediction_path):
             raise ImportError ('File '+ prediction_path +' does not exist.')
         elif not os.path.isfile(reference_path):
             raise ImportError ('File '+ reference_path +' does not exist.')
-
-        self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'])
-        self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'])
+        
+        if human_eval:
+            execution_dir = os.path.dirname(os.path.abspath(__file__))
+            human_path = execution_dir + "/../Data/kalm_data/human_eval/KaLM-Eval.csv"
+            human_score = pd.read_csv(human_path)
+            test_ids = human_score["Input.sample_id"].unique()
+            self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'])
+            self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'])
+            self.predictions_df = self.predictions_df.loc[test_ids]
+            self.references_df = self.references_df.loc[test_ids]
+        else:
+            self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'])
+            self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'])
 
         if len(self.predictions_df) != len(self.references_df):
             raise ValueError("Number of reference and generated reasons do not match.")
@@ -53,9 +63,9 @@ class Scorer:
 
     
 class BLEUScore(Scorer):
-    def __init__(self, prediction_path, reference_path, which="own"):
+    def __init__(self, prediction_path, reference_path, which="own", human_eval=False):
         self.which = which
-        super().__init__(prediction_path, reference_path)
+        super().__init__(prediction_path, reference_path, human_eval=human_eval)
         self.compute_scores()
 
     def compute_scores(self):
@@ -86,8 +96,8 @@ class BLEUScore(Scorer):
 
 class MoverScore(Scorer):
 
-    def __init__(self, prediction_path, reference_path):
-        super().__init__(prediction_path, reference_path)
+    def __init__(self, prediction_path, reference_path, human_eval=False):
+        super().__init__(prediction_path, reference_path, human_eval=human_eval)
 
         self.compute_scores()
 
@@ -125,8 +135,8 @@ class MoverScore(Scorer):
 
 
 class RougeScore(Scorer):
-    def __init__(self, prediction_path, reference_path, rouge_type = ['rouge2',2]):
-        super().__init__(prediction_path, reference_path)
+    def __init__(self, prediction_path, reference_path, rouge_type = ['rouge2',2], human_eval=False):
+        super().__init__(prediction_path, reference_path, human_eval=human_eval)
         self.rouge_type = rouge_type
         self.compute_scores()
         
