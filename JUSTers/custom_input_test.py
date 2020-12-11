@@ -1,10 +1,11 @@
 ### might transformers version 2.4.1, torch version 1.18.0, tensorflow some old version
-
+import torch
 from transformers import AutoTokenizer, AutoModelWithLMHead
-
-tokenizer = AutoTokenizer.from_pretrained("aliosm/ComVE-gpt2-medium")  
-
-model = AutoModelWithLMHead.from_pretrained("aliosm/ComVE-gpt2-medium") 
+device = torch.device("cuda")
+#tokenizer = AutoTokenizer.from_pretrained("aliosm/ComVE-gpt2-medium")  
+tokenizer = AutoTokenizer.from_pretrained("./models_dir/gpt2/")  
+#model = AutoModelWithLMHead.from_pretrained("aliosm/ComVE-gpt2-medium") 
+model = AutoModelWithLMHead.from_pretrained("./models_dir/gpt2/") 
 
 
 custom_input = ['I eat the submarine']

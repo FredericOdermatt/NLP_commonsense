@@ -274,7 +274,7 @@ def own_bleu_score(predictions, references, max_order=4, smooth=False):
     # original bleu score uses constant weights
     #print(references[0])
     #scores = corpus_bleu([references], [predictions])
-    scores = sentence_bleu(references, predictions, weights=(0.25, 0.25, 0.25, 0.25))
+    scores = sentence_bleu(references, predictions, weights=(0.25, 0.25, 0.25))
     return scores
 
 
