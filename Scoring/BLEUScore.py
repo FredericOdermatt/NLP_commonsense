@@ -19,6 +19,7 @@ import os
 
 import nltk
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu
+from mosestokenizer import MosesTokenizer
 
 EXIT_STATUS_ANSWERS_MALFORMED = 1
 EXIT_STATUS_PREDICTIONS_MALFORMED = 2
@@ -264,16 +265,16 @@ def own_bleu_score(predictions, references, max_order=4, smooth=False):
     references = nltk.word_tokenize(compl_ref)
     '''
 
-    references = [nltk.word_tokenize(reference.strip('.')) for reference in references]
-    #references = [reference.split() for reference in references]
-    predictions = nltk.word_tokenize(predictions[0].strip('.'))
-    #predictions = predictions[0].split()
+    #predictions = nltk.word_tokenize(predictions[0].strip('.'))
+    tokenizer = MosesTokenizer('en')
+    predictions = tokenizer.tokenize(predictions[0].lower())
+    references = [tokenizer.tokenize(reference.lower()) for reference in references]
     # change directory back after nltk tokenizers have been applied
     os.chdir(original_dir)
     # original bleu score uses constant weights
     #print(references[0])
     #scores = corpus_bleu([references], [predictions])
-    scores = sentence_bleu(references, predictions)
+    scores = sentence_bleu(references, predictions, weights=(0.25, 0.25, 0.25, 0.25))
     return scores
 
 

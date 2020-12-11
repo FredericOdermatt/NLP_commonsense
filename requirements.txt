@@ -6,3 +6,5 @@ seaborn
 pyemd
 transformers
 rouge-score
+mosestokenizer
+fast-mosestokenizer
