@@ -1,6 +1,7 @@
 import numpy as np
 
-from Scoring.Scores import MoverScore, BLEUScore, RougeScore
+from Scoring.Scores import MeteorScore, BLEUScore, RougeScore
+from Scoring.Scores import BertScore, MoverScore
 from Visualization.visuals import Visualizor
 import pandas as pd
 
@@ -11,6 +12,7 @@ reference_path = execution_dir + "/Data/kalm_data/references/subtaskC_gold_answe
 prediction_path = execution_dir + "/Data/kalm_data/predictions/subtaskC_answers.csv"
 
 human_evaluated_only = True
+
 
 ## -------- Mover Score --------
 MS = MoverScore(prediction_path, reference_path, human_eval=human_evaluated_only)
@@ -30,6 +32,19 @@ RS.print_bad_results()
 BS = BLEUScore(prediction_path, reference_path, which="own", human_eval=human_evaluated_only)
 BS.print_bad_results()
 print("BLEU Scores for similarity: ", np.mean(BS.scores))
+
+## -------- BERT Score --------
+# only works with GPU
+BERTS = BertScore(prediction_path, reference_path, human_eval=human_evaluated_only)
+print("BERT Scores for similarity: ", np.mean(BERTS.scores))
+BERTS.print_bad_results()
+
+
+## -------- METEOR Score --------
+# does not work with GPU
+METEORS = MeteorScore(prediction_path, reference_path, human_eval=human_evaluated_only)
+print("METEOR Scores for similarity: ", np.mean(METEORS.scores))
+METEORS.print_bad_results()
 
 ## -------- Human Score --------
 human_path = execution_dir + "/Data/kalm_data/human_eval/KaLM-Eval.csv"
@@ -53,3 +68,4 @@ vis.plot_hist(BS.scores, outfile_name="BS_hist")
 scores = [MS.scores, BS.scores, RS.scores, human[:,0], human[:,1], human[:,2], np.mean(human, axis=1)]
 names = ["Mover Score", "BLEU Score", "Rouge Score", "Human 1", "Human 2", "Human 3", "Human_mean"]
 vis.plot_joint(scores=scores, names=names)
+

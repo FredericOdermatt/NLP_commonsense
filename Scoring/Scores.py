@@ -9,6 +9,7 @@ from Scoring.BLEUScore import own_bleu_score, challenge_score
 from rouge_score import rouge_scorer
 
 
+
 class Scorer:
     def __init__(self, prediction_path, reference_path, human_eval=False):
         self.prediction_path = prediction_path
@@ -61,7 +62,7 @@ class Scorer:
         return list(map(lambda a: round(a,5), self._scores))
 
 
-    
+
 class BLEUScore(Scorer):
     def __init__(self, prediction_path, reference_path, which="own", human_eval=False):
         self.which = which
@@ -168,4 +169,74 @@ class RougeScore(Scorer):
             print("Row Index:     : ", self.references_df.index[int(i)], "\n")
             print("------------------------------------\n")
 
-                
+
+
+class BertScore(Scorer):
+    def __init__(self, prediction_path, reference_path, human_eval=False):
+        
+        super().__init__(prediction_path, reference_path, human_eval=human_eval)
+        self.compute_scores()
+        
+        
+    def compute_scores(self):
+        self.preprocess()
+        from bert_score import score as BERT_scrorer_hugging
+        self._scores = BERT_scrorer_hugging(self._predictions,self._references, lang = "en", rescale_with_baseline=True)[2].numpy()
+
+
+    def preprocess(self):
+        predictions_array = self.predictions_df.to_numpy()
+        self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
+
+        references_array = self.references_df.to_numpy()
+        self._references = references_array.tolist()
+
+
+    def print_bad_results(self, shown_elems=3):
+        
+        idx = np.argpartition(self._scores, shown_elems)
+
+        for i in idx[:shown_elems]:
+            print("References:     ", self._references[i], "\n")
+            print("Answer:     : ", self._predictions[i], "\n")
+            print("BERT Score:     : ", self._scores[i], "\n")
+            print("Row Index:     : ", self.references_df.index[int(i)], "\n")
+            print("------------------------------------\n")
+
+
+
+
+class MeteorScore(Scorer):
+    def __init__(self, prediction_path, reference_path, human_eval=False):
+        super().__init__(prediction_path, reference_path, human_eval=human_eval)
+        self.compute_scores()
+        
+        
+    def compute_scores(self):
+        self.preprocess()
+        
+        from datasets import load_metric  
+        
+        metric = load_metric("meteor")
+        self._scores = list(map(lambda p,x,y,z: max(metric.compute(predictions=[p],references=[x])['meteor'], 
+                                                    metric.compute(predictions=[p],references=[y])['meteor'],
+                                                    metric.compute(predictions=[p],references=[z])['meteor']), 
+                                                    self._predictions, self._references[0], self._references[1], self._references[2]))
+
+    def preprocess(self):
+        predictions_array = self.predictions_df.to_numpy()
+        self._predictions = predictions_array.reshape((np.prod(predictions_array.shape),)).tolist()
+
+        references_array = self.references_df.to_numpy()
+        self._references = references_array.T.tolist()
+    
+    def print_bad_results(self, shown_elems=3):
+        
+        idx = np.argpartition(self._scores, shown_elems)
+
+        for i in idx[:shown_elems]:
+            print("References:     ", self._references[0][i], ", ", self._references[1][i],", ", self._references[2][i], "\n")
+            print("Answer:     : ", self._predictions[i], "\n")
+            print("METEOR Score:     : ", self._scores[i], "\n")
+            print("Row Index:     : ", self.references_df.index[int(i)], "\n")
+            print("------------------------------------\n")

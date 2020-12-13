@@ -1,13 +1,14 @@
 ### might transformers version 2.4.1, torch version 1.18.0, tensorflow some old version
-
+import torch
 from transformers import AutoTokenizer, AutoModelWithLMHead
+device = torch.device("cuda")
+#tokenizer = AutoTokenizer.from_pretrained("aliosm/ComVE-gpt2-medium")  
+tokenizer = AutoTokenizer.from_pretrained("./models_dir/gpt2/")  
+#model = AutoModelWithLMHead.from_pretrained("aliosm/ComVE-gpt2-medium") 
+model = AutoModelWithLMHead.from_pretrained("./models_dir/gpt2/") 
 
-tokenizer = AutoTokenizer.from_pretrained("aliosm/ComVE-gpt2-medium")  
 
-model = AutoModelWithLMHead.from_pretrained("aliosm/ComVE-gpt2-medium") 
-
-
-custom_input = ['I eat the submarine']
+custom_input = ['Summer in North America is great for skiing,  snowshoeing,  and making a snowman.']
 
 prompt_text = custom_input[0] + ' <|continue|>'
 encoded_prompt = tokenizer.encode(prompt_text, add_special_tokens=False, return_tensors="pt")
