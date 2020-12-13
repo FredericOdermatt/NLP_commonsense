@@ -240,7 +240,7 @@ def main():
         text = tokenizer.decode(generated_sequence, clean_up_tokenization_spaces=True)
         text = text[: text.find(args.stop_token) if args.stop_token else None]
 
-        reasons.append(text.split('<|continue|>')[1].strip())
+        reasons.append(text.split('<|continue|>')[1].strip().replace('!',''))
     end_time = time.time()
     print('Evaluation time:', end_time - start_time, 'seconds')
 
