@@ -190,7 +190,7 @@ def main():
 
     args = parser.parse_args()
 
-    with open('data_dir/development-x.csv', 'r') as file:
+    with open('data_dir/test_temp.csv', 'r') as file:
         lines = list(csv.reader(file))
     lines = lines[1:]
 
@@ -244,7 +244,7 @@ def main():
     end_time = time.time()
     print('Evaluation time:', end_time - start_time, 'seconds')
 
-    with open('data_dir/subtaskC_answers.csv', 'w') as file:
+    with open('data_dir/own_test.csv', 'w') as file:
         writer = csv.writer(file)
 
         for idx, reason in enumerate(reasons):
