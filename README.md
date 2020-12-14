@@ -78,6 +78,29 @@ The submarine is delicious.
 ...
 Output: There is no way to be eaten in the sky.
 ```
+# Training JUSTers
+```bash
+bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train.sh gpt2 16 5 5
+```
+
+* -o: name of output file (should end in .out)
+* -R: requirements for GPU
+* -J: job name, useful for overview and to use bpeek
+* -W: how much time is given to the job
+* $1 model (JUSTers submission based on gpt2-medium)
+* $2 batch_size (JUSTers: 64, however memory issue for cluster) 
+* $3 per_gpu_train_batch_size (JUSTers: 5, however memory issue for cluster)
+* $4 num_train_epochs (JUSTers: 5)
+
+# Generate explanations based on own model
+
+```bash
+bsub -o test_gen.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J JUSTers_generate -W 4:00 ./generate.sh gpt2 5 1 0.9
+```
+* $2 k (JUSTers: 50)
+* $3 temperature (JUSTers: 1) 
+* $3 p (JUSTers: 0.9)
+
 
 ## Notes
 
