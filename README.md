@@ -80,7 +80,7 @@ Output: There is no way to be eaten in the sky.
 ```
 # Training JUSTers
 ```bash
-bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train.sh gpt2 16 5 5
+bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train.sh gpt2-medium 16 5 5
 ```
 
 * -o: name of output file (should end in .out)
@@ -95,7 +95,7 @@ bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 
 # Generate explanations based on own model
 
 ```bash
-bsub -o test_gen.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J JUSTers_generate -W 4:00 ./generate.sh gpt2 5 1 0.9
+bsub -o test_gen.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J JUSTers_generate -W 4:00 ./generate.sh gpt2-medium 5 1 0.9
 ```
 * $2 k (JUSTers: 50)
 * $3 temperature (JUSTers: 1) 
@@ -110,6 +110,23 @@ bsub -o test_gen.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J JUSTers_generate -
 * conda list: lists all installed packages in conda environment
 * bpeek -J JOBNAME: will output recent lines a job wrote on the GPU
 * An activated enviroment will automatically be picked up by the submission system.
+
+# Evaluate predictions
+
+```bash
+bsub -o score.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J evaluate_predictions -W 4:00 ./evaluate.sh 
+```
+
+
+## Notes
+
+* bjobs: lists current jobs
+* bbjobs: lists current jobs, better overview
+* bjobs -d: lists jobs that have finished a short while ago
+* conda list: lists all installed packages in conda environment
+* bpeek -J JOBNAME: will output recent lines a job wrote on the GPU
+* An activated enviroment will automatically be picked up by the submission system.
+
 
 ## Working with submodules
 

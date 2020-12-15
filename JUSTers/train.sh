@@ -1,9 +1,9 @@
 python run_lm_finetuning.py \
 --train_data_file data_dir/training \
 --output_dir models_dir/$1 \
---model_type gpt2 \
+--model_type gpt2-medium \
 --eval_data_file data_dir/development \
---model_name_or_path $1 \
+--model_name_or_path gpt2-medium \
 --block_size 128 \
 --do_train \
 --do_eval \

@@ -205,7 +205,7 @@ class BertScore(Scorer):
 
 
 
-
+'''
 class MeteorScore(Scorer):
     def __init__(self, prediction_path, reference_path, human_eval=False):
         super().__init__(prediction_path, reference_path, human_eval=human_eval)
@@ -240,3 +240,4 @@ class MeteorScore(Scorer):
             print("METEOR Score:     : ", self._scores[i], "\n")
             print("Row Index:     : ", self.references_df.index[int(i)], "\n")
             print("------------------------------------\n")
+'''
