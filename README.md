@@ -102,15 +102,6 @@ bsub -o test_gen.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J JUSTers_generate -
 * $3 p (JUSTers: 0.9)
 
 
-## Notes
-
-* bjobs: lists current jobs
-* bbjobs: lists current jobs, better overview
-* bjobs -d: lists jobs that have finished a short while ago
-* conda list: lists all installed packages in conda environment
-* bpeek -J JOBNAME: will output recent lines a job wrote on the GPU
-* An activated enviroment will automatically be picked up by the submission system.
-
 # Evaluate predictions
 
 ```bash
