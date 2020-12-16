@@ -51,7 +51,7 @@ conda install --file requirements_conda.txt
 
 To download the nltk extensions 'punkt' and 'wordnet' (for MeteorScore) execute the provided script.
 ```bash
-chmod +x setup_punkt.sh
+chmod +x setup_nltk.sh
 ./setup_nltk.sh
 ```
 
@@ -85,7 +85,7 @@ bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 
 * -R: requirements for GPU
 * -J: job name, useful for overview and to use bpeek
 * -W: how much time is given to the job
-* $1 model (JUSTers submission based on gpt2-medium)
+* $1 output directory
 * $2 batch_size (JUSTers: 64, however memory issue for cluster) 
 * $3 per_gpu_train_batch_size (JUSTers: 5, however memory issue for cluster)
 * $4 num_train_epochs (JUSTers: 5)
