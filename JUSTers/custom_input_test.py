@@ -9,8 +9,10 @@ model = AutoModelWithLMHead.from_pretrained("./models_dir/gpt2/")
 
 
 custom_input = ['Summer in North America is great for skiing,  snowshoeing,  and making a snowman.']
-
-prompt_text = custom_input[0] + ' <|continue|>'
+custom_input = ['The fridge feels good and makes no pain.']
+#custom_input = ['Puring in the fridge makes no pain.']
+prompt_text = '<|evidence|>' + custom_input[0] + ' <|continue|>'
+#prompt_text = custom_input[0] + ' <|continue|>'
 encoded_prompt = tokenizer.encode(prompt_text, add_special_tokens=False, return_tensors="pt")
 output_sequences = model.generate(
             input_ids=encoded_prompt,
