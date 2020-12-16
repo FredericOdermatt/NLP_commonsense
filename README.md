@@ -9,9 +9,6 @@ We follow the challenge given in [SemEval 2020 Task C](https://competitions.coda
 # Installation
 
 This installation is for now made specifically for a node on Leonhard.
-```bash
-module load python_gpu/3.7.4
-```
 
 ```bash
 git clone https://github.com/FredericOdermatt/NLP_commonsense
@@ -48,6 +45,7 @@ pip install -e fairseq
 Install other requirements
 ```bash
 pip install -r requirements.txt
+conda install --file requirements_conda.txt
 ```
 
 
