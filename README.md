@@ -51,10 +51,10 @@ pip install -r requirements.txt
 ```
 
 
-To download the nltk tokenizer 'punkt' execute the provided script
+To download the nltk extensions 'punkt' and 'wordnet' (for MeteorScore) execute the provided script.
 ```bash
 chmod +x setup_punkt.sh
-./setup_punkt.sh
+./setup_nltk.sh
 ```
 
 # Training KaLM

@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 import numpy as np
+import warnings
+warnings.filterwarnings("ignore")
 
 # BLEU Score
 from Scoring.BLEUScore import own_bleu_score, challenge_score
@@ -204,7 +206,7 @@ class BertScore(Scorer):
             print("------------------------------------\n")
 
 
-
+# Currently only usable on CPU!
 '''
 class MeteorScore(Scorer):
     def __init__(self, prediction_path, reference_path, human_eval=False):
