@@ -110,6 +110,8 @@ class ComsenTextDataset_train(Dataset):
 		for i in range(len(X_lines)):
 			#take the correct statement out
 			del X_lines[i][1]
+			#X_lines[i] = [X_lines[0]] + X_lines[2:]
+
 			#swap elements of evidence and the false statement
 			false_stat = X_lines[i][0]
 			X_lines[i][0] = X_lines[i][1]
@@ -131,7 +133,6 @@ class ComsenTextDataset_train(Dataset):
 
 # evaluation class TODO put usefull files inside, currently evaluated on training data set.
 # If implemented, change ComsenTextDataset_train to ComsenTextDataset_eval in function load_and_cache_examples
-'''
 class ComsenTextDataset_eval(Dataset):
 	def __init__(self, tokenizer: PreTrainedTokenizer, args, file_path: str, block_size=512):
 		assert os.path.isfile(file_path + "-x.csv")
@@ -143,7 +144,7 @@ class ComsenTextDataset_eval(Dataset):
 
 			for row in reader:
 				X_lines.append(row[1:])
-		X_lines = X_lines[1:]
+		X_lines = X_lines[1]
 
 		Y_lines = list()
 		with open(file_path + "-y.csv") as f:
@@ -154,6 +155,7 @@ class ComsenTextDataset_eval(Dataset):
 
 		lines = list()
 		for x_line, y_line in zip(X_lines, Y_lines):
+			x_line = "<|evidence|>"+ x_line
 			for i in range(3):			
 				if len(y_line[i].strip()) > 0:
 					lines.append(x_line.strip() + " <|continue|> " + y_line[i].strip())
@@ -166,13 +168,13 @@ class ComsenTextDataset_eval(Dataset):
 
 	def __getitem__(self, i):
 		return torch.tensor(self.examples[i])
-'''
+
 
 def load_and_cache_examples(args, tokenizer, evaluate=False):
 	file_path = args.eval_data_file if evaluate else args.train_data_file
 
 	if evaluate:
-		return ComsenTextDataset_train(tokenizer, args, file_path=file_path, block_size=args.block_size)
+		return ComsenTextDataset_eval(tokenizer, args, file_path=file_path, block_size=args.block_size)
 	else:
 		return ComsenTextDataset_train(tokenizer, args, file_path=file_path, block_size=args.block_size)
 
