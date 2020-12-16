@@ -3,3 +3,6 @@
 *.pyc
 .vscode*
 Scoring/tokenizers/*
+*.out
+JUSTers/models_dir/*
+JUSTers/runs/*

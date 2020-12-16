@@ -1,0 +1,145 @@
+Input.sample_id,Input.false_sent,Input.Reason1,Answer.reason1
+
+394,the stove helps to cool down the house,the stove is used to heat up the house,3
+
+394,the stove helps to cool down the house,the stove is used to heat up the house,3
+
+394,the stove helps to cool down the house,the stove is used to heat up the house,3
+
+1837,he put all three of his legs into the trousers,a pair of trousers only have two legs on them,3
+
+1837,he put all three of his legs into the trousers,a pair of trousers only have two legs on them,3
+
+1837,he put all three of his legs into the trousers,a pair of trousers only have two legs on them,3
+
+334,Horse uses its trunk to drink water,Horses do not have trunks.,3
+
+334,Horse uses its trunk to drink water,Horses do not have trunks.,3
+
+334,Horse uses its trunk to drink water,Horses do not have trunks.,3
+
+892,he went for a walk in the woods and was bitten by a shark,sharks do not live in the water,2
+
+892,he went for a walk in the woods and was bitten by a shark,sharks do not live in the water,2
+
+892,he went for a walk in the woods and was bitten by a shark,sharks do not live in the water,2
+
+1344,Drinking beers makes the girl become an alien,Aliens are not real.,2
+
+1344,Drinking beers makes the girl become an alien,Aliens are not real.,2
+
+1344,Drinking beers makes the girl become an alien,Aliens are not real.,2
+
+83,Salsa is for hair,Salsa is not for hair.,3
+
+83,Salsa is for hair,Salsa is not for hair.,3
+
+83,Salsa is for hair,Salsa is not for hair.,3
+
+1123,My friend runs for 2 inches every day.,Inches are too small to run for.,3
+
+1123,My friend runs for 2 inches every day.,Inches are too small to run for.,3
+
+1123,My friend runs for 2 inches every day.,Inches are too small to run for.,3
+
+73,He opened the bottle to read it,Bottles do not have words on them.,3
+
+73,He opened the bottle to read it,Bottles do not have words on them.,3
+
+73,He opened the bottle to read it,Bottles do not have words on them.,3
+
+1852,He put a pony in the lock.,A pony is too big to fit in a lock,3
+
+1852,He put a pony in the lock.,A pony is too big to fit in a lock,3
+
+1852,He put a pony in the lock.,A pony is too big to fit in a lock,3
+
+904,fire can burn without oxygen,Fire needs oxygen to burn.,3
+
+904,fire can burn without oxygen,Fire needs oxygen to burn.,3
+
+904,fire can burn without oxygen,Fire needs oxygen to burn.,3
+
+1996,today my hand is very clear to see the world,hands can't see the world by themselves,2
+
+1996,today my hand is very clear to see the world,hands can't see the world by themselves,2
+
+1996,today my hand is very clear to see the world,hands can't see the world by themselves,2
+
+1111,Sleeping with makeup on nourishes your skin and makes it healthier.,Sleeping with makeup on nourishes your skin and makes it healthier,0
+
+1111,Sleeping with makeup on nourishes your skin and makes it healthier.,Sleeping with makeup on nourishes your skin and makes it healthier,0
+
+1111,Sleeping with makeup on nourishes your skin and makes it healthier.,Sleeping with makeup on nourishes your skin and makes it healthier,0
+
+877,standing up for long hours is relaxing,Standing up for long hours will make you tired.,2
+
+877,standing up for long hours is relaxing,Standing up for long hours will make you tired.,2
+
+877,standing up for long hours is relaxing,Standing up for long hours will make you tired.,2
+
+600,Chronic pain is usually caused by a person's mood.,Chronic pain is usually caused by a person's mood.,0
+
+600,Chronic pain is usually caused by a person's mood.,Chronic pain is usually caused by a person's mood.,0
+
+600,Chronic pain is usually caused by a person's mood.,Chronic pain is usually caused by a person's mood.,0
+
+1736,A cat eats a building,A building is too big for a cat to eat.,2
+
+1736,A cat eats a building,A building is too big for a cat to eat.,2
+
+1736,A cat eats a building,A building is too big for a cat to eat.,2
+
+1798,Sally taught her students burglary,Burglars are not taught by teachers.,2
+
+1798,Sally taught her students burglary,Burglars are not taught by teachers.,2
+
+1798,Sally taught her students burglary,Burglars are not taught by teachers.,2
+
+294,The man slipped on the gentle breeze,A breeze is soft and cannot cause a man to slip.,3
+
+294,The man slipped on the gentle breeze,A breeze is soft and cannot cause a man to slip.,3
+
+294,The man slipped on the gentle breeze,A breeze is soft and cannot cause a man to slip.,3
+
+811,he purchased lime and cement to prepare sandwiches for dinner,Lime and cement cannot be used to make sandwiches.,2
+
+811,he purchased lime and cement to prepare sandwiches for dinner,Lime and cement cannot be used to make sandwiches.,2
+
+811,he purchased lime and cement to prepare sandwiches for dinner,Lime and cement cannot be used to make sandwiches.,2
+
+1139,Something you find at a hotel is n cow shelter,Something you find at a hotel is n cow shelter,0
+
+1139,Something you find at a hotel is n cow shelter,Something you find at a hotel is n cow shelter,0
+
+1139,Something you find at a hotel is n cow shelter,Something you find at a hotel is n cow shelter,0
+
+93,Water tastes like orange juice,Water does not taste like orange juice because orange juice is made from oranges.,1
+
+93,Water tastes like orange juice,Water does not taste like orange juice because orange juice is made from oranges.,1
+
+93,Water tastes like orange juice,Water does not taste like orange juice because orange juice is made from oranges.,1
+
+799,the man took his door to the dry cleaner,Doors do not go to dry cleaner's for dry cleaning.,1
+
+799,the man took his door to the dry cleaner,Doors do not go to dry cleaner's for dry cleaning.,1
+
+799,the man took his door to the dry cleaner,Doors do not go to dry cleaner's for dry cleaning.,1
+
+67,The fire will cool you if you touch it.,The fire will burn you if you touch it,2
+
+67,The fire will cool you if you touch it.,The fire will burn you if you touch it,2
+
+67,The fire will cool you if you touch it.,The fire will burn you if you touch it,2
+
+1830,You are unlikely to ever find a book in the library.,You are likely to find a book in a library.,1
+
+1830,You are unlikely to ever find a book in the library.,You are likely to find a book in a library.,1
+
+1830,You are unlikely to ever find a book in the library.,You are likely to find a book in a library.,1
+
+932,my brother always play football in a swimming tank,A swimming tank is too small to play football.,1
+
+932,my brother always play football in a swimming tank,A swimming tank is too small to play football.,1
+
+932,my brother always play football in a swimming tank,A swimming tank is too small to play football.,1
