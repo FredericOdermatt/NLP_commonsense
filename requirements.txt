@@ -5,5 +5,4 @@ pandas==1.1.4
 seaborn==0.11.0
 pyemd==0.5.1
 transformers==4.0.0
-sentencepiece==0.1.91
 rouge-score==0.0.4
