@@ -103,6 +103,9 @@ bsub -o test_gen.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J JUSTers_generate -
 
 
 # Evaluate predictions
+Before running this script on the GPU, you should execute it on CPU first. This will download all needed pretrained models for the scoring methods. This might take several minutes. This has to be done only once and the GPU can be used afterwards. 
+
+Inside the script, change the paths to your generated output and their reference files.
 
 ```bash
 bsub -o score.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J evaluate_predictions -W 4:00 ./evaluate.sh 
