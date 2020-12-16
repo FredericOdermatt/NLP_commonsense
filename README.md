@@ -9,9 +9,6 @@ We follow the challenge given in [SemEval 2020 Task C](https://competitions.coda
 # Installation
 
 This installation is for now made specifically for a node on Leonhard.
-```bash
-module load python_gpu/3.7.4
-```
 
 ```bash
 git clone https://github.com/FredericOdermatt/NLP_commonsense
@@ -48,12 +45,13 @@ pip install -e fairseq
 Install other requirements
 ```bash
 pip install -r requirements.txt
+conda install --file requirements_conda.txt
 ```
 
 
 To download the nltk extensions 'punkt' and 'wordnet' (for MeteorScore) execute the provided script.
 ```bash
-chmod +x setup_punkt.sh
+chmod +x setup_nltk.sh
 ./setup_nltk.sh
 ```
 
@@ -66,6 +64,30 @@ bsub -o test.out -R "rusage[mem=8164,ngpus_excl_p=1]" -J first_test -W 4:00 <<< 
 * -R: requirements for GPU
 * -J: job name, useful for overview and to use bpeek
 * -W: how much time is given to the job
+* $1 model (JUSTers submission based on gpt2-medium)
+* $2 batch_size (JUSTers: 64, however memory issue for cluster) 
+* $3 per_gpu_train_batch_size (JUSTers: 5, however memory issue for cluster)
+* $4 num_train_epochs (JUSTers: 5)
+
+# Generate explanations based on own model
+
+```bash
+bsub -o test_gen.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J JUSTers_generate -W 4:00 ./generate.sh gpt2-medium 5 1 0.9
+```
+* $2 k (JUSTers: 50)
+* $3 temperature (JUSTers: 1) 
+* $3 p (JUSTers: 0.9)
+
+
+# Evaluate predictions
+Before running this script on the GPU, you should execute it on CPU first. This will download all needed pretrained models for the scoring methods. This might take several minutes. This has to be done only once and the GPU can be used afterwards. 
+
+Inside the script, change the paths to your generated output and their reference files.
+
+```bash
+bsub -o score.out -R "rusage[ngpus_excl_p=1,mem=12000]" -J evaluate_predictions -W 4:00 ./evaluate.sh 
+```
+
 
 # Evaluate Trained KaLM Model
 
@@ -79,15 +101,17 @@ The submarine is delicious.
 Output: There is no way to be eaten in the sky.
 ```
 # Training JUSTers
+
+Note: Before submiting the job to the Leonhard cluster the training script must once be executed locally `./train.sh OUT_DIR_NAME 16 5 5`. This allows the script to download required models to the cache at ~/.cache where it can read it from when training on the GPU.
 ```bash
-bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train.sh gpt2-medium 16 5 5
+bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train.sh OUT_DIR_NAME 16 5 5
 ```
 
 * -o: name of output file (should end in .out)
 * -R: requirements for GPU
 * -J: job name, useful for overview and to use bpeek
 * -W: how much time is given to the job
-* $1 model (JUSTers submission based on gpt2-medium)
+* $1 output directory
 * $2 batch_size (JUSTers: 64, however memory issue for cluster) 
 * $3 per_gpu_train_batch_size (JUSTers: 5, however memory issue for cluster)
 * $4 num_train_epochs (JUSTers: 5)

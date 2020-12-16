@@ -169,7 +169,6 @@ class ComsenTextDataset_eval(Dataset):
 	def __getitem__(self, i):
 		return torch.tensor(self.examples[i])
 
-
 def load_and_cache_examples(args, tokenizer, evaluate=False):
 	file_path = args.eval_data_file if evaluate else args.train_data_file
 
