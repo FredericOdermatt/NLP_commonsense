@@ -100,6 +100,12 @@ Output: There is no way to be eaten in the sky.
 ```
 # Training JUSTers
 
+## Training on Google Colab
+
+Open [JUSTers/Justers_colab.ipynb](https://colab.research.google.com/github/FredericOdermatt/NLP_commonsense/blob/master/JUSTers/Justers_colab.ipynb) directly in google colab by clicking on this link. After training on colab you can download the trained model using rsync as described in the notebook.
+
+## Training on Leonhard
+
 Note: Before submiting the job to the Leonhard cluster the training script must once be executed locally `./train.sh OUT_DIR_NAME 16 5 5`. This allows the script to download required models to the cache at ~/.cache where it can read it from when training on the GPU.
 ```bash
 bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train.sh OUT_DIR_NAME 16 5 5
