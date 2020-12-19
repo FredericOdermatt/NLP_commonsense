@@ -8,8 +8,6 @@ We follow the challenge given in [SemEval 2020 Task C](https://competitions.coda
 
 # Installation
 
-This installation is for now made specifically for a node on Leonhard.
-
 ```bash
 git clone https://github.com/FredericOdermatt/NLP_commonsense
 ```

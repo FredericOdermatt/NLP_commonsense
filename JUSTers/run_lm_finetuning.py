@@ -72,6 +72,28 @@ except ImportError:
 	from tensorboardX import SummaryWriter
 
 
+import subprocess
+
+def get_gpu_memory_map():
+		"""Get the current gpu usage.
+
+		Returns
+		-------
+		usage: dict
+				Keys are device ids as integers.
+				Values are memory usage as integers in MB.
+		"""
+		result = subprocess.check_output(
+				[
+						'nvidia-smi', '--query-gpu=memory.used',
+						'--format=csv,nounits,noheader'
+				], encoding='utf-8')
+		# Convert lines into a dictionary
+		gpu_memory = [int(x) for x in result.strip().split('\n')]
+		gpu_memory_map = dict(zip(range(len(gpu_memory)), gpu_memory))
+		return gpu_memory_map
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -264,7 +286,7 @@ def mask_tokens(inputs: torch.Tensor, tokenizer: PreTrainedTokenizer, args) -> T
 def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer) -> Tuple[int, float]:
 	""" Train the model """
 	if args.local_rank in [-1, 0]:
-		tb_writer = SummaryWriter()
+		tb_writer = SummaryWriter('tensorboard_logs/orig')
 
 	args.train_batch_size = args.per_gpu_train_batch_size * max(1, args.n_gpu)
 
@@ -405,6 +427,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 				scheduler.step()  # Update learning rate schedule
 				model.zero_grad()
 				global_step += 1
+				tb_writer.add_scalar("memory", get_gpu_memory_map()[0], global_step)
 
 				if args.local_rank in [-1, 0] and args.logging_steps > 0 and global_step % args.logging_steps == 0:
 					# Log metrics
@@ -414,8 +437,9 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 						results = evaluate(args, model, tokenizer)
 						for key, value in results.items():
 							tb_writer.add_scalar("eval_{}".format(key), value, global_step)
-					tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
+					tb_writer.add_scalar("lr", scheduler.get_last_lr()[0], global_step)
 					tb_writer.add_scalar("loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
+
 					logging_loss = tr_loss
 
 				if args.local_rank in [-1, 0] and args.save_steps > 0 and global_step % args.save_steps == 0:

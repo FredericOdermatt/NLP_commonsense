@@ -1,16 +1,21 @@
 
 import argparse
 import numpy as np
+import sys
+import os
+
+# allow it to find Visualization
+sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
 '''
-from Scoring.Scores import MeteorScore
-from Scoring.Scores import BLEUScore, RougeScore
-from Scoring.Scores import BertScore, MoverScore
+from Scores import MeteorScore
+from Scores import BLEUScore, RougeScore
+from Scores import BertScore, MoverScore
 '''
 from Visualization.visuals import Visualizor
+
 import pandas as pd
 
-import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -68,7 +73,7 @@ human_evaluated_only = False
 
 ## -------- BLEU Score --------
 if eval(args.call_BLEU):
-    from Scoring.Scores import BLEUScore
+    from Scores import BLEUScore
     BS = BLEUScore(prediction_path, reference_path, which="own", human_eval=human_evaluated_only)
     print("BLEU Scores for similarity: ", np.mean(BS.scores))
     if eval(args.print_bad):
@@ -77,7 +82,7 @@ if eval(args.call_BLEU):
 
 ## -------- Rouge Score --------
 if eval(args.call_ROUGE):
-    from Scoring.Scores import RougeScore
+    from Scores import RougeScore
     RS = RougeScore(prediction_path, reference_path, human_eval=human_evaluated_only)
     #RS = RougeScore(prediction_path, reference_path, rouge_type = ['rouge2',2]) 
     # possible values for rouge_type[0] = ['rouge1',..., 'rouge9', 'rougeL']
@@ -90,7 +95,7 @@ if eval(args.call_ROUGE):
 ## -------- METEOR Score --------
 # does not work with GPU
 if eval(args.call_METEOR):
-    from Scoring.Scores import MeteorScore
+    from Scores import MeteorScore
     # does not work with GPU
     METEORS = MeteorScore(prediction_path, reference_path, human_eval=human_evaluated_only)
     print("METEOR Scores for similarity: ", np.mean(METEORS.scores))
@@ -100,7 +105,7 @@ if eval(args.call_METEOR):
 
 ## -------- Mover Score --------
 if eval(args.call_MoverScore):
-    from Scoring.Scores import MoverScore
+    from Scores import MoverScore
     MS = MoverScore(prediction_path, reference_path, human_eval=human_evaluated_only)
     print("Mover Scores for similarity: ", np.mean(MS.scores))
     if eval(args.print_bad):
@@ -110,7 +115,7 @@ if eval(args.call_MoverScore):
 ## -------- BERT Score --------
 if eval(args.call_BERTScore):
     # only works with GPU
-    from Scoring.Scores import BertScore
+    from Scores import BertScore
     BERTS = BertScore(prediction_path, reference_path, human_eval=human_evaluated_only)
     print("BERT Scores for similarity: ", np.mean(BERTS.scores))
     if eval(args.print_bad):

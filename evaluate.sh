@@ -1,4 +1,4 @@
-python test_scorer.py \
+python Scoring/compute_scores.py \
 --ref_path  /JUSTers/data_dir/development-y.csv \
 --pred_path /JUSTers/data_dir/development/3-gpt2-medium.csv \
 --call_BLEU True \
