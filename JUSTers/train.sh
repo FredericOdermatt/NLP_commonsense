@@ -14,4 +14,5 @@ python run_lm_finetuning.py \
 --save_steps 9000000000 \
 --eval_all_checkpoints \
 --overwrite_output_dir \
---overwrite_cache
+--overwrite_cache \
+--logging_steps 1

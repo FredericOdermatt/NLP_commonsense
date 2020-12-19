@@ -6,3 +6,4 @@ Scoring/tokenizers/*
 *.out
 JUSTers/models_dir/*
 JUSTers/runs/*
+*/events.out*
