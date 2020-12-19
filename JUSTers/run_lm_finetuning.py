@@ -39,6 +39,8 @@ from torch.utils.data import DataLoader, Dataset, RandomSampler, SequentialSampl
 from torch.utils.data.distributed import DistributedSampler
 from tqdm.auto import tqdm, trange
 
+device = torch.device("cuda")
+
 from transformers import (
 	WEIGHTS_NAME,
 	AdamW,
