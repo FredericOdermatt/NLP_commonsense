@@ -248,8 +248,7 @@ def main():
         writer = csv.writer(file)
 
         for idx, reason in enumerate(reasons):
-            writer.writerow([idx + 1, reason])
-
+            writer.writerow([lines[idx][0], reason])
 
 if __name__ == "__main__":
     main()

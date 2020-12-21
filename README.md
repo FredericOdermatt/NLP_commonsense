@@ -6,6 +6,7 @@ I.e. given an input "He eats the submarine." the model should return something a
 
 We follow the challenge given in [SemEval 2020 Task C](https://competitions.codalab.org/competitions/21080#learn_the_details).
 
+
 # Installation
 
 ```bash
@@ -35,7 +36,7 @@ Install torch 1.4.0
 ```bash
 conda install pytorch==1.4.0 torchvision==0.5.0 -c pytorch
 ```
-Install fairseq which is a submodule of the cloned gitrepo
+Install fairseq which is a submodule of the cloned gitrepo.
 ```bash
 pip install -e fairseq
 ```
