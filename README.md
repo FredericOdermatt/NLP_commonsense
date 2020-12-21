@@ -6,6 +6,7 @@ I.e. given an input "He eats the submarine." the model should return something a
 
 We follow the challenge given in [SemEval 2020 Task C](https://competitions.codalab.org/competitions/21080#learn_the_details).
 
+
 # Installation
 
 ```bash
