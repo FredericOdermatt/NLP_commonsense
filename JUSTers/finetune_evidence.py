@@ -109,9 +109,9 @@ class ComsenTextDataset_train(Dataset):
 		lines = list()
 		for i in range(len(X_lines)):
 			#take the correct statement out
-			# del X_lines[i][1]
+			del X_lines[i][1]
 			#take out urban dictionary
-			#del X_lines[i][-1]
+			del X_lines[i][-1]
 			#X_lines[i] = [X_lines[0]] + X_lines[2:]
 
 			#swap elements of evidence and the false statement
