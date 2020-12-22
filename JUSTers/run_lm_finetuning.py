@@ -469,7 +469,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 				break
 		checkpoint_prefix = "checkpoint"
 		# Save model checkpoint
-		output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, epoch))
+		output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, epoch+1))
 		os.makedirs(output_dir, exist_ok=True)
 		model_to_save = (
 			model.module if hasattr(model, "module") else model

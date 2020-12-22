@@ -1,6 +1,6 @@
 python run_generation.py \
 --model_type gpt2-medium \
---model_name_or_path models_dir/$1 \
+--model_name_or_path $1 \
 --length 128 \
 --stop_token "<|endoftext|>" \
 --k $2 \

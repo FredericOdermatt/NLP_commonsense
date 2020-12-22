@@ -1,6 +1,6 @@
 python finetune_evidence.py \
 --train_data_file ./../Data/justers/training/training \
---output_dir models_dir/$1 \
+--output_dir $1 \
 --model_type gpt2 \
 --eval_data_file ./../Data/justers/evaluation/evaluation \
 --model_name_or_path gpt2 \

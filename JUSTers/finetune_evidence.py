@@ -105,14 +105,15 @@ class ComsenTextDataset_train(Dataset):
 
 			for row in reader:
 				Y_lines.append(row[1:])
-
 		lines = list()
+		# GOAL: from: 	False, True, wiktionary, urban
+		#		to:		wiktionary <evidence> False
 		for i in range(len(X_lines)):
 			#take the correct statement out
 			del X_lines[i][1]
 			#take out urban dictionary
 			del X_lines[i][-1]
-			#X_lines[i] = [X_lines[0]] + X_lines[2:]
+			# FORM: False, wiktionary
 
 			#swap elements of evidence and the false statement
 			false_stat = X_lines[i][0]
@@ -255,7 +256,7 @@ def mask_tokens(inputs: torch.Tensor, tokenizer: PreTrainedTokenizer, args) -> T
 def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedTokenizer) -> Tuple[int, float]:
 	""" Train the model """
 	if args.local_rank in [-1, 0]:
-		tb_writer = SummaryWriter()
+		tb_writer = SummaryWriter('tensorboard_logs/evid_justers')
 
 	args.train_batch_size = args.per_gpu_train_batch_size * max(1, args.n_gpu)
 
@@ -359,7 +360,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 		epochs_trained, int(args.num_train_epochs), desc="Epoch", disable=args.local_rank not in [-1, 0]
 	)
 	set_seed(args)  # Added here for reproducibility
-	for _ in train_iterator:
+	for epoch in train_iterator:
 		epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=True)
 		for step, batch in enumerate(epoch_iterator):
 
@@ -405,7 +406,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 						results = evaluate(args, model, tokenizer)
 						for key, value in results.items():
 							tb_writer.add_scalar("eval_{}".format(key), value, global_step)
-					tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
+					tb_writer.add_scalar("lr", scheduler.get_last_lr()[0], global_step)
 					tb_writer.add_scalar("loss", (tr_loss - logging_loss) / args.logging_steps, global_step)
 					logging_loss = tr_loss
 
@@ -432,6 +433,24 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 			if args.max_steps > 0 and global_step > args.max_steps:
 				epoch_iterator.close()
 				break
+		checkpoint_prefix = "checkpoint"
+		# Save model checkpoint
+		output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, epoch+1))
+		os.makedirs(output_dir, exist_ok=True)
+		model_to_save = (
+			model.module if hasattr(model, "module") else model
+		)  # Take care of distributed/parallel training
+		model_to_save.save_pretrained(output_dir)
+		tokenizer.save_pretrained(output_dir)
+
+		torch.save(args, os.path.join(output_dir, "training_args.bin"))
+		logger.info("Epoch %s: Saving model checkpoint to %s", epoch, output_dir)
+
+		_rotate_checkpoints(args, checkpoint_prefix)
+
+		torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
+		torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
+		logger.info("Epoch %s: Saving optimizer and scheduler states to %s", epoch, output_dir)
 		if args.max_steps > 0 and global_step > args.max_steps:
 			train_iterator.close()
 			break
