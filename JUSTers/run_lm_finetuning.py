@@ -392,7 +392,7 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 		epochs_trained, int(args.num_train_epochs), desc="Epoch", disable=args.local_rank not in [-1, 0]
 	)
 	set_seed(args)  # Added here for reproducibility
-	for _ in train_iterator:
+	for epoch in train_iterator:
 		epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=True)
 		for step, batch in enumerate(epoch_iterator):
 
@@ -467,6 +467,24 @@ def train(args, train_dataset, model: PreTrainedModel, tokenizer: PreTrainedToke
 			if args.max_steps > 0 and global_step > args.max_steps:
 				epoch_iterator.close()
 				break
+		checkpoint_prefix = "checkpoint"
+		# Save model checkpoint
+		output_dir = os.path.join(args.output_dir, "{}-{}".format(checkpoint_prefix, epoch))
+		os.makedirs(output_dir, exist_ok=True)
+		model_to_save = (
+			model.module if hasattr(model, "module") else model
+		)  # Take care of distributed/parallel training
+		model_to_save.save_pretrained(output_dir)
+		tokenizer.save_pretrained(output_dir)
+
+		torch.save(args, os.path.join(output_dir, "training_args.bin"))
+		logger.info("Epoch %s: Saving model checkpoint to %s", epoch, output_dir)
+
+		_rotate_checkpoints(args, checkpoint_prefix)
+
+		torch.save(optimizer.state_dict(), os.path.join(output_dir, "optimizer.pt"))
+		torch.save(scheduler.state_dict(), os.path.join(output_dir, "scheduler.pt"))
+		logger.info("Epoch %s: Saving optimizer and scheduler states to %s", epoch, output_dir)
 		if args.max_steps > 0 and global_step > args.max_steps:
 			train_iterator.close()
 			break
