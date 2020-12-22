@@ -1,6 +1,6 @@
 python run_lm_finetuning.py \
 --train_data_file data_dir/training \
---output_dir models_dir/$1 \
+--output_dir $1 \
 --model_type gpt2-medium \
 --eval_data_file data_dir/development \
 --model_name_or_path gpt2-medium \
