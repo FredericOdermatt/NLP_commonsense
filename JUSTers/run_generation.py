@@ -22,6 +22,7 @@ import argparse
 import logging
 import csv
 import time
+import os
 
 import numpy as np
 import torch
@@ -159,6 +160,11 @@ def main():
         help="Model type selected in the list: " + ", ".join(MODEL_CLASSES.keys()),
     )
     parser.add_argument(
+        "--save_in_model_dir",
+        action="store_true",
+        help="whether to store in the model directory"
+    )
+    parser.add_argument(
         "--model_name_or_path",
         default=None,
         type=str,
@@ -244,7 +250,12 @@ def main():
     end_time = time.time()
     print('Evaluation time:', end_time - start_time, 'seconds')
 
-    with open('data_dir/develop_own_pred.csv', 'w') as file:
+    if args.save_in_model_dir:
+        outfile = os.path.join(args.model_name_or_path, 'develop_own_pred.csv')
+    else:
+        outfile = 'data_dir/develop_own_pred.csv'
+
+    with open(outfile, 'w') as file:
         writer = csv.writer(file)
 
         for idx, reason in enumerate(reasons):
