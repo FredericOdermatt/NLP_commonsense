@@ -52,7 +52,19 @@ logger = logging.getLogger(__name__)
 MAX_LENGTH = int(10000)  # Hardcoded max length to avoid infinite loop
 
 MODEL_CLASSES = {
-    "gpt2-medium": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-1": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-2": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-3": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-4": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-5": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-6": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-7": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-8": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-9": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-10": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-11": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-12": (GPT2LMHeadModel, GPT2Tokenizer),
+    "checkpoint-13": (GPT2LMHeadModel, GPT2Tokenizer),
     "gpt2": (GPT2LMHeadModel, GPT2Tokenizer),
     "ctrl": (CTRLLMHeadModel, CTRLTokenizer),
     "openai-gpt": (OpenAIGPTLMHeadModel, OpenAIGPTTokenizer),
@@ -217,7 +229,8 @@ def main():
     start_time = time.time()
     reasons = list()
     for line in tqdm(lines):
-        prompt_text = line[1].strip() + ' <|continue|>'
+        prompt_text = ' <|evidence|>' + line[1].strip() + '<|continue|>'
+        #prompt_text = line[1].strip() + '<|continue|>'
 
         # Different models need different input formatting and/or extra arguments
         requires_preprocessing = args.model_type in PREPROCESSING_FUNCTIONS.keys()
@@ -235,21 +248,22 @@ def main():
             top_p=args.p,
             repetition_penalty=args.repetition_penalty,
         )
-
+        
         # Batch size == 1. to add more examples please use num_return_sequences > 1
         generated_sequence = output_sequences[0].tolist()
         text = tokenizer.decode(generated_sequence, clean_up_tokenization_spaces=True)
         text = text[: text.find(args.stop_token) if args.stop_token else None]
+        #print(text.split('<|continue|>')[1].strip().replace('!',''))
 
         reasons.append(text.split('<|continue|>')[1].strip().replace('!',''))
     end_time = time.time()
     print('Evaluation time:', end_time - start_time, 'seconds')
 
-    with open('data_dir/develop_own_pred.csv', 'w') as file:
+    with open('data_dir/pred_'+ args.model_type +'.csv', 'w') as file:
         writer = csv.writer(file)
 
         for idx, reason in enumerate(reasons):
-            writer.writerow([idx + 1, reason])
+            writer.writerow([lines[idx][0], reason])
 
 
 if __name__ == "__main__":
