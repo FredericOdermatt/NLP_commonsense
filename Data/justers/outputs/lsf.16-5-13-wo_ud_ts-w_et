@@ -1,0 +1,39 @@
+Sender: LSF System <lsfadmin@lo-s4-034>
+Subject: Job 13025763: <./evaluate.sh> in cluster <leonhard> Done
+
+Job <./evaluate.sh> was submitted from host <lo-login-02> by user <ldisse> in cluster <leonhard> at Wed Dec 23 14:51:33 2020
+Job was executed on host(s) <lo-s4-034>, in queue <gpu.4h>, as user <ldisse> in cluster <leonhard> at Wed Dec 23 14:51:52 2020
+</cluster/home/ldisse> was used as the home directory.
+</cluster/home/ldisse/NLP_project/NLP_commonsense> was used as the working directory.
+Started at Wed Dec 23 14:51:52 2020
+Terminated at Wed Dec 23 14:52:17 2020
+Results reported at Wed Dec 23 14:52:17 2020
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+./evaluate.sh
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   18.01 sec.
+    Max Memory :                                 7027 MB
+    Average Memory :                             139.67 MB
+    Total Requested Memory :                     14000.00 MB
+    Delta Memory :                               6973.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   21 sec.
+    Turnaround time :                            44 sec.
+
+The output (if any) follows:
+
+BLEU Scores for similarity:  0.1823263
+Rouge Scores for similarity:  0.19826660000000002
+Mover Scores for similarity:  0.25922649999999997
+BERT Scores for similarity:  0.427539
