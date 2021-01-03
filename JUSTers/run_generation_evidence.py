@@ -203,7 +203,7 @@ def main():
 
     args = parser.parse_args()
 
-    with open('/cluster/home/ldisse/NLP_project/NLP_commonsense/Data/justers/test/test-x.csv', 'r') as file:
+    with open('../Data/justers/test/test-x.csv', 'r') as file:
         lines = list(csv.reader(file))
     lines = lines[1:]
 
