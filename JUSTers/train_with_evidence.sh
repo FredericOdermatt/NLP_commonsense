@@ -14,5 +14,5 @@ python finetune_evidence.py \
 --save_steps 9000000000 \
 --eval_all_checkpoints \
 --overwrite_output_dir \
---overwrite_cache
---learning_rate 1e-4
+--overwrite_cache \
+--learning_rate 1e-6

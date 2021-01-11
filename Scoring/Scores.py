@@ -5,7 +5,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # BLEU Score
-from Scoring.BLEUScore import own_bleu_score, challenge_score
+from BLEUScore import own_bleu_score, challenge_score
 
 # Rouge Score
 from rouge_score import rouge_scorer
@@ -33,15 +33,15 @@ class Scorer:
         if human_eval:
             execution_dir = os.path.dirname(os.path.abspath(__file__))
             human_path = execution_dir + "/../Data/kalm_data/human_eval/KaLM-Eval.csv"
-            human_score = pd.read_csv(human_path)
+            human_score = pd.read_csv(human_path, header=0)
             test_ids = human_score["Input.sample_id"].unique()
-            self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'])
-            self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'])
+            self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'], header=0)
+            self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'], header=0)
             self.predictions_df = self.predictions_df.loc[test_ids]
             self.references_df = self.references_df.loc[test_ids]
         else:
-            self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'])
-            self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'])
+            self.predictions_df = pd.read_csv(prediction_path, index_col = 0, names=['out'], header=0)
+            self.references_df = pd.read_csv(reference_path, index_col = 0, names=['ref1','ref2','ref3'], header=0)
 
         if len(self.predictions_df) != len(self.references_df):
             raise ValueError("Number of reference and generated reasons do not match.")
@@ -207,7 +207,6 @@ class BertScore(Scorer):
 
 
 # Currently only usable on CPU!
-'''
 class MeteorScore(Scorer):
     def __init__(self, prediction_path, reference_path, human_eval=False):
         super().__init__(prediction_path, reference_path, human_eval=human_eval)

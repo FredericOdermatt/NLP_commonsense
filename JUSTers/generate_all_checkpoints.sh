@@ -9,7 +9,7 @@
 # ....... and so on
 
 BASE_FOLDER=${SCRATCH}/JUSTers/first_try
-NUMBER_OF_CHECKPOINTS=13
+NUMBER_OF_CHECKPOINTS=9
 
 for ((i=1; i<=$NUMBER_OF_CHECKPOINTS; i++))
 do
