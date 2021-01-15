@@ -6,7 +6,6 @@ from scipy.stats import pearsonr, spearmanr
 def corrfunc(x,y, ax=None, **kws):
     """Plot the correlation coefficient in the top left hand corner of a plot."""
     r, p = pearsonr(x, y)
-    print(p)
     ax = ax or plt.gca()
     # Unicode for lowercase rho (ρ)
     rho = '\u03C1'

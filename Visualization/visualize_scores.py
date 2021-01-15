@@ -1,11 +1,16 @@
 from visuals import Visualizor
 import numpy as np
 import pandas as pd
+import os
+
+# change name of desired model, e.g. JUSTERS
 model_of_interest = 'KALM'
 model_list = [model_of_interest+str(i+1) for i in range(3)]
 
-human_path =  "./../data100/human_eval_results.csv"
-machine_path = "./../data100/machine_eval_results.csv"
+execution_dir = os.path.dirname(os.path.abspath(__file__))
+
+human_path =  execution_dir + "/../data100/human_eval_results.csv"
+machine_path = execution_dir + "/../data100/machine_eval_results.csv"
 
 human_scoring = pd.read_csv(human_path, header=0)
 machine_scoring = pd.read_csv(machine_path, header=0)
@@ -26,10 +31,8 @@ for i in range(len(human_scores[0])):
     human_scores[2][i] += noise3
 '''
 vis = Visualizor()
-#vis.plot_hist(MS.scores, outfile_name="MS_hist")
-#vis.plot_hist(BS.scores, outfile_name="BS_hist")
-scores = [machine_scoring['BLEU'], machine_scoring['ROUGE'], machine_scoring['MOVER'], machine_scoring['BERT'], machine_scoring['METEOR'], human_avg_score]
-names = machine_scoring.columns.values.tolist() + ['Human mean']
-#vis.plot_joint(scores=scores, names=names)
-vis.plot_box(scores=scores, names=names)
+col_names = machine_scoring.columns.values.tolist()
+scores = [machine_scoring.iloc[:,i] for i in range(len(col_names))] + [human_avg_score]
+names = col_names + ['Human mean']
+vis.plot_joint(scores=scores, names=names)
 #vis.plot_joint(scores=human_scores, names=human_names)
