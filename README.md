@@ -66,15 +66,41 @@ Open [JUSTers/Justers_colab.ipynb](https://colab.research.google.com/github/Fred
 
 Before running this script on the GPU, you should execute it on CPU first. This will download all needed pretrained models for the scoring methods. This might take several minutes. This has to be done only once and the GPU can be used afterwards. 
 
+The following training script only considers the data without evidence.
 `./train.sh OUT_DIR_NAME 16 5 5`.
 ```bash
 bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train.sh ${SCRATCH}/JUSTers/first_try 16 5 5
+```
+
+The following training script considers the data including evidence from Wiktionary. The current input format of the sentences during training is: "additional evidence <|evidence|> false-statement <|continue|> training target".
+`./train.sh OUT_DIR_NAME 16 5 5`.
+```bash
+bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J train_Justers -W 4:00 ./train_with_evidence.sh ${SCRATCH}/JUSTers/first_try 16 5 5
 ```
 
 * $1 output directory
 * $2 batch_size (JUSTers: 64, however memory issue for cluster) 
 * $3 per_gpu_train_batch_size (JUSTers: 5, however memory issue for cluster)
 * $4 num_train_epochs (JUSTers: 5)
+
+To include additional evidence from Urban Dictionary change the commented section in the file finetune_envidence.py .
+
+## Evaluation
+
+To evaluate a desired model with the implemented scores use the executable evaluate.sh .
+Within the executable change the arguments ref_path and pred_path to the corresponding reference and the prediction file containing the generated reasons of your model.
+Further, set the bool for the desired metrics to be computed. Important to note is that MoverScore and BERTScore are only executable on GPU (as suggested in the command below). METEOR on the other hand is only executable on CPU. So its currently not possible to compute MoverScore together with METEOR in a single run. To combine all scores in a single .csv, first run the script with all metrics set to True besides METEOR. Then, run the script again, this time setting all scores to False besides METEOR.
+```bash
+bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J ./evaluate.sh -W 4:00 ./evaluate.sh
+```
+
+## Visualization
+
+First compute the automated scores of the generated outputs by executing running the above mentioned evaluate.sh script.
+To create the scatter plot matrices along the correlation coefficients execute the file visualize_scores.py. This file uses the above created .csv and outputs a .png file with the matrix. GPU execution is not necessary.
+```bash
+python Visualization/visualize_scores.py
+```
 
 ## Generate Explanations - JUSTers
 
