@@ -64,7 +64,7 @@ prediction_path = execution_dir + "/../" + args.pred_path
 # Currently, we only have the human evaluated files for KALM. Hence this can only be used for testing KALMs output so far.
 human_evaluated_only = False
 csv_dic = {}
-out_path = './../data100/machine_eval_results.csv'
+out_path = execution_dir + '/../data100/machine_eval_results.csv'
 
 ## -------- BLEU Score --------
 if eval(args.call_BLEU):
