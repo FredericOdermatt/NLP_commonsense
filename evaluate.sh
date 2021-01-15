@@ -1,9 +1,9 @@
 python Scoring/compute_scores.py \
---ref_path  /JUSTers/data_dir/development-y.csv \
---pred_path /JUSTers/data_dir/development/3-gpt2-medium.csv \
+--ref_path  $1 \
+--pred_path $2 \
 --call_BLEU True \
 --call_ROUGE True \
 --call_METEOR False \
---call_MoverScore False \
+--call_MoverScore True \
 --call_BERTScore True \
 --print_bad False

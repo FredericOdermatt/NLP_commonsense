@@ -1,21 +1,15 @@
 
 import argparse
 import numpy as np
+import pandas as pd
 import sys
 import os
-
-# allow it to find Visualization
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
 '''
 from Scores import MeteorScore
 from Scores import BLEUScore, RougeScore
 from Scores import BertScore, MoverScore
 '''
-from Visualization.visuals import Visualizor
-
-import pandas as pd
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -69,13 +63,15 @@ prediction_path = execution_dir + args.pred_path
 # In case you only want to consider the 100 sentences that were evaluated from humans this should be set to true. 
 # Currently, we only have the human evaluated files for KALM. Hence this can only be used for testing KALMs output so far.
 human_evaluated_only = False
-
+csv_dic = {}
+out_path = '/cluster/home/ldisse/NLP_project/NLP_commonsense/data100/machine_eval_results.csv'
 
 ## -------- BLEU Score --------
 if eval(args.call_BLEU):
     from Scores import BLEUScore
     BS = BLEUScore(prediction_path, reference_path, which="own", human_eval=human_evaluated_only)
     print("BLEU Scores for similarity: ", np.mean(BS.scores))
+    csv_dic['BLEU'] = BS.scores
     if eval(args.print_bad):
         BS.print_bad_results()
 
@@ -88,6 +84,7 @@ if eval(args.call_ROUGE):
     # possible values for rouge_type[0] = ['rouge1',..., 'rouge9', 'rougeL']
     # possible values for rouge_type[1] = [0,1,2], 0: recall (ROUGE), 1: precision (BLEU), 2: fmeasure
     print("Rouge Scores for similarity: ", np.mean(RS.scores))
+    csv_dic['ROUGE'] = RS.scores
     if eval(args.print_bad):
         RS.print_bad_results()
 
@@ -99,8 +96,18 @@ if eval(args.call_METEOR):
     # does not work with GPU
     METEORS = MeteorScore(prediction_path, reference_path, human_eval=human_evaluated_only)
     print("METEOR Scores for similarity: ", np.mean(METEORS.scores))
+    csv_dic['METEOR'] = METEORS.scores
     if eval(args.print_bad):
         METEORS.print_bad_results()
+    
+    if os.path.exists(out_path):
+        in_df = pd.read_csv(out_path, header=0)
+        in_df['METEOR'] = METEORS.scores
+        in_df.to_csv(out_path, index=False)
+    else:
+        csv_dic['METEOR'] = METEORS.scores
+        in_df = pd.DataFrame(csv_dic)
+        in_df.to_csv(out_path, index=False)
 
 
 ## -------- Mover Score --------
@@ -108,6 +115,7 @@ if eval(args.call_MoverScore):
     from Scores import MoverScore
     MS = MoverScore(prediction_path, reference_path, human_eval=human_evaluated_only)
     print("Mover Scores for similarity: ", np.mean(MS.scores))
+    csv_dic['MOVER'] = MS.scores
     if eval(args.print_bad):
         MS.print_bad_results()
 
@@ -118,34 +126,19 @@ if eval(args.call_BERTScore):
     from Scores import BertScore
     BERTS = BertScore(prediction_path, reference_path, human_eval=human_evaluated_only)
     print("BERT Scores for similarity: ", np.mean(BERTS.scores))
+    csv_dic['BERT'] = BERTS.scores
     if eval(args.print_bad):
         BERTS.print_bad_results()
 
 
-
-
-
 '''
-## -------- Human Score --------
-human_path = execution_dir + "/Data/kalm_data/human_eval/KaLM-Eval.csv"
-human_score = pd.read_csv(human_path)
-test_ids = human_score["Input.sample_id"].unique()
-human = np.empty((len(test_ids), 3))
-for i in range(len(test_ids)):
-    human[i] = human_score["Answer.reason1"].loc[human_score["Input.sample_id"] == test_ids[i]].to_numpy()
-    noise1 = np.random.uniform(-0.15,0.15)
-    noise2 = np.random.uniform(-0.15,0.15)
-    noise3 = np.random.uniform(-0.15,0.15)
-    human[i,0] += noise1
-    human[i,1] += noise2
-    human[i,2] += noise3
-
-## Plotting results
-
-vis = Visualizor()
-vis.plot_hist(MS.scores, outfile_name="MS_hist")
-vis.plot_hist(BS.scores, outfile_name="BS_hist")
-scores = [MS.scores, BS.scores, RS.scores, human[:,0], human[:,1], human[:,2], np.mean(human, axis=1)]
-names = ["Mover Score", "BLEU Score", "Rouge Score", "Human 1", "Human 2", "Human 3", "Human_mean"]
-vis.plot_joint(scores=scores, names=names)
+if os.path.exists(out_path):
+    in_df = pd.read_csv(out_path)
+    new_df = pd.DataFrame(csv_dic)
+    join_df = pd.concat([in_df, new_df], axis=1, join='inner')
+    join_df.to_csv(out_path, index=False)
+else:
 '''
+if not eval(args.call_METEOR):
+    out_df = pd.DataFrame(csv_dic)
+    out_df.to_csv(out_path, index=False)

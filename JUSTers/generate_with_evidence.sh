@@ -1,8 +1,8 @@
 python run_generation_evidence.py \
---model_type gpt2 \
---model_name_or_path models_dir/$1 \
+--model_type $1 \
+--model_name_or_path $2 \
 --length 128 \
 --stop_token "<|endoftext|>" \
---k $2 \
---temperature $3 \
---p $4 
+--k $3 \
+--temperature $4 \
+--p $5 
