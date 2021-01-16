@@ -6,6 +6,9 @@ I.e. given an input "He eats the submarine." the model should return something a
 
 We follow the challenge given in [SemEval 2020 Task C](https://competitions.codalab.org/competitions/21080#learn_the_details).
 
+# Quickly Try Our Repo Out
+
+We have produced a python notebook allowing for a quick look around some main features of this repo at [JUSTers/colab_quick_start.ipynb](https://colab.research.google.com/github/FredericOdermatt/NLP_commonsense/blob/master/JUSTers/colab_quick_start.ipynb).
 
 # Installation
 
@@ -60,7 +63,7 @@ chmod +x setup_nltk.sh
 
 Google Colab has some GPUs that provide up to either 16 or even 25 Gb of GPU RAM. To train high batch-sizes we provide a python-notebook on google colab.
 
-Open [JUSTers/Justers_colab.ipynb](https://colab.research.google.com/github/FredericOdermatt/NLP_commonsense/blob/master/JUSTers/Justers_colab.ipynb) directly in google colab by clicking on this link. After training on colab you can download the trained model using rsync as described in the notebook.
+Open [JUSTers/colab_quick_start.ipynb](https://colab.research.google.com/github/FredericOdermatt/NLP_commonsense/blob/master/JUSTers/colab_quick_start.ipynb) directly in google colab by clicking on this link. After training on colab you can download the trained model using rsync as described in the notebook.
 
 ## Training on Leonhard - JUSTers
 
@@ -91,7 +94,7 @@ To evaluate a desired model with the implemented scores use the executable evalu
 Provide the arguments ref_path and pred_path to the corresponding references and the predictions of your model.
 Further, set the bool for the desired metrics to be computed. Important to note is that MoverScore and BERTScore are only executable on GPU (as suggested in the command below). METEOR on the other hand is only executable on CPU. So its currently not possible to compute MoverScore together with METEOR in a single run. To combine all scores in a single .csv, first run the script with all metrics set to True besides METEOR. Then, run the script again, this time setting all scores to False besides METEOR.
 ```bash
-bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J evaluation_scores -W 4:00 ./evaluate.sh ./../data100/references_complete.csv ./../data100/kalm.csv
+bsub -o test.out -R "rusage[mem=12000,ngpus_excl_p=1]" -J evaluation_scores -W 4:00 ./evaluate.sh data100/references_complete.csv data100/kalm.csv
 ```
 
 ## Visualization
